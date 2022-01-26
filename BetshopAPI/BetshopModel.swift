@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct BetshopModel {
+public struct BetshopModel {
     let id: Int64
 
     let name: String

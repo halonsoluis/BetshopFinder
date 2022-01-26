@@ -6,7 +6,7 @@
 //
 
 import XCTest
-@testable import betshops
+@testable import BetshopAPI
 
 class DataMapperTests: XCTestCase {
 
