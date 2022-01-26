@@ -8,30 +8,17 @@
 import XCTest
 @testable import betshops
 
-struct DataMapper {
-    static func buildModel(from data: DecodedBetshop) -> BetshopModel {
-        BetshopModel(
-            id: data.id,
-            name: data.name,
-            address: data.address,
-            topLevelAddress: "\(data.city) - \(data.county)",
-            location: (data.location.lat, data.location.lng)
-        )
-    }
-}
-
 class DataMapperTests: XCTestCase {
 
     func testMapper_createsBetshopModel_withValidData() {
-        let betshopData = exampleData
-        let betshop = DataMapper.buildModel(from: betshopData)
+        let betshop = DataMapper.buildModel(from: exampleData)
 
-        XCTAssertEqual(betshop.id, betshopData.id)
-        XCTAssertEqual(betshop.name, betshopData.name)
-        XCTAssertEqual(betshop.address, betshopData.address)
-        XCTAssertEqual(betshop.topLevelAddress, "\(betshopData.city) - \(betshopData.county)")
-        XCTAssertEqual(betshop.location.lat, betshopData.location.lat)
-        XCTAssertEqual(betshop.location.lng, betshopData.location.lng)
+        XCTAssertEqual(betshop.id, 2350329)
+        XCTAssertEqual(betshop.name, "Lenbachplatz 7")
+        XCTAssertEqual(betshop.address, "80333 Muenchen")
+        XCTAssertEqual(betshop.topLevelAddress, "Muenchen - Bayern")
+        XCTAssertEqual(betshop.location.lat, 48.1405515)
+        XCTAssertEqual(betshop.location.lng, 11.5689638)
     }
 }
 
