@@ -17,4 +17,7 @@ struct BetshopModel {
     let county: String
 
     let location: (lat: Double, lng: Double)
+
+    //Harcoded Data not provided by the API
+    static let workingHours = (opening: "08:00", closing:"16:00")
 }
