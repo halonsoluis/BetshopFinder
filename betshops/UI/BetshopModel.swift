@@ -12,9 +12,7 @@ struct BetshopModel {
 
     let name: String
     let address: String
-
-    let city: String
-    let county: String
+    let topLevelAddress: String
 
     let location: (lat: Double, lng: Double)
 

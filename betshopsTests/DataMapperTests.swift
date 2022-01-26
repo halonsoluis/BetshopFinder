@@ -14,8 +14,7 @@ struct DataMapper {
             id: data.id,
             name: data.name,
             address: data.address,
-            city: data.city,
-            county: data.county,
+            topLevelAddress: "\(data.city) - \(data.county)",
             location: (data.location.lat, data.location.lng)
         )
     }
@@ -30,8 +29,7 @@ class DataMapperTests: XCTestCase {
         XCTAssertEqual(betshop.id, betshopData.id)
         XCTAssertEqual(betshop.name, betshopData.name)
         XCTAssertEqual(betshop.address, betshopData.address)
-        XCTAssertEqual(betshop.city, betshopData.city)
-        XCTAssertEqual(betshop.county, betshopData.county)
+        XCTAssertEqual(betshop.topLevelAddress, "\(betshopData.city) - \(betshopData.county)")
         XCTAssertEqual(betshop.location.lat, betshopData.location.lat)
         XCTAssertEqual(betshop.location.lng, betshopData.location.lng)
     }
