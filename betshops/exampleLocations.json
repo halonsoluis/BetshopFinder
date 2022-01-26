@@ -1,0 +1,41 @@
+{
+    "count": 109,
+    "betshops": [
+        {
+            "name": " Lenbachplatz 7",
+            "location": {
+                "lng": 11.5689638,
+                "lat": 48.1405515
+            },
+            "id": 2350329,
+            "county": "Bayern",
+            "city_id": 80333,
+            "city": "Muenchen",
+            "address": "80333 Muenchen"
+        },
+        {
+            "name": " St-Galler-Str 4",
+            "location": {
+                "lng": 11.5310798,
+                "lat": 48.1600108
+            },
+            "id": 2350575,
+            "county": "Bayern",
+            "city_id": 80637,
+            "city": "Muenchen",
+            "address": "80637 Muenchen"
+        },
+        {
+            "name": " Marienplatz 1/U-Bahn-Kiosk",
+            "location": {
+                "lng": 11.5754485,
+                "lat": 48.1373932
+            },
+            "id": 2350022,
+            "county": "Bayern",
+            "city_id": 80331,
+            "city": "Muenchen",
+            "address": "80331 Muenchen"
+        }
+    ]
+}
