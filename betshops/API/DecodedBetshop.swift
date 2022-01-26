@@ -15,7 +15,6 @@ struct DecodedBetshop: Decodable {
     let city_id: Int64
     let city: String
     let address: String
-
 }
 
 struct GeoLocation: Decodable {

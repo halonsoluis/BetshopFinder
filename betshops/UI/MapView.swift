@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  MapView.swift
 //  betshops
 //
 //  Created by Hugo Alonso on 25/01/2022.
@@ -8,7 +8,7 @@
 import SwiftUI
 import MapKit
 
-struct ContentView: View {
+struct MapView: View {
 
     @State var mapRegion = MKCoordinateRegion(
         center: CLLocationCoordinate2D(
@@ -29,7 +29,7 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        MapView()
             .previewDevice("iPhone 13 mini")
     }
 }
