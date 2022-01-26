@@ -10,7 +10,7 @@ import XCTest
 
 class APIDataParserTests: XCTestCase {
 
-    func testExample() throws {
+    func test_JSONData_isProperlyDecoded() throws {
         guard let url = Bundle(for: type(of: self)).url(forResource: "exampleLocations", withExtension: "json") else {
             XCTFail("Example data not found")
             return
