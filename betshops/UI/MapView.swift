@@ -11,14 +11,8 @@ import MapKit
 struct MapView: View {
 
     @State var mapRegion = MKCoordinateRegion(
-        center: CLLocationCoordinate2D(
-            latitude: 48.137154,
-            longitude: 11.576124
-        ),
-        span: MKCoordinateSpan(
-            latitudeDelta: 0.1,
-            longitudeDelta: 0.1
-        )
+        center: munich,
+        span: defaultSpan
     )
 
     var body: some View {
@@ -32,4 +26,15 @@ struct ContentView_Previews: PreviewProvider {
         MapView()
             .previewDevice("iPhone 13 mini")
     }
+}
+
+extension MapView {
+    private static let munich = CLLocationCoordinate2D(
+        latitude: 48.137154,
+        longitude: 11.576124
+    )
+    private static let defaultSpan = MKCoordinateSpan(
+        latitudeDelta: 0.1,
+        longitudeDelta: 0.1
+    )
 }
