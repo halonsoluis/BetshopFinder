@@ -16,6 +16,7 @@
 		5B2EC25427A205E500993957 /* BetshopModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2EC22427A1F1D300993957 /* BetshopModel.swift */; };
 		5B2EC25727A20A4600993957 /* APIDataParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2EC25627A20A4600993957 /* APIDataParserTests.swift */; };
 		5B2EC25A27A20D1000993957 /* exampleLocations.json in Resources */ = {isa = PBXBuildFile; fileRef = 5B2EC21D27A1EDD800993957 /* exampleLocations.json */; };
+		5B2EC25F27A2100700993957 /* APIDataParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2EC25E27A2100700993957 /* APIDataParser.swift */; };
 		5B566B66279FE88B004BA1B4 /* betshopsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B566B65279FE88B004BA1B4 /* betshopsApp.swift */; };
 		5B566B68279FE88B004BA1B4 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B566B67279FE88B004BA1B4 /* MapView.swift */; };
 		5B566B6A279FE88E004BA1B4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B566B69279FE88E004BA1B4 /* Assets.xcassets */; };
@@ -43,6 +44,7 @@
 		5B2EC23D27A205B200993957 /* BetshopAPI.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = BetshopAPI.docc; sourceTree = "<group>"; };
 		5B2EC24327A205B200993957 /* BetshopAPITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BetshopAPITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B2EC25627A20A4600993957 /* APIDataParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIDataParserTests.swift; sourceTree = "<group>"; };
+		5B2EC25E27A2100700993957 /* APIDataParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIDataParser.swift; sourceTree = "<group>"; };
 		5B566B62279FE88B004BA1B4 /* betshops.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = betshops.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B566B65279FE88B004BA1B4 /* betshopsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = betshopsApp.swift; sourceTree = "<group>"; };
 		5B566B67279FE88B004BA1B4 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 				5B2EC22427A1F1D300993957 /* BetshopModel.swift */,
 				5B2EC23C27A205B200993957 /* BetshopAPI.h */,
 				5B2EC23D27A205B200993957 /* BetshopAPI.docc */,
+				5B2EC25E27A2100700993957 /* APIDataParser.swift */,
 			);
 			path = BetshopAPI;
 			sourceTree = "<group>";
@@ -347,6 +350,7 @@
 			files = (
 				5B2EC25227A205DD00993957 /* DecodedBetshop.swift in Sources */,
 				5B2EC25327A205E100993957 /* DataMapper.swift in Sources */,
+				5B2EC25F27A2100700993957 /* APIDataParser.swift in Sources */,
 				5B2EC23E27A205B200993957 /* BetshopAPI.docc in Sources */,
 				5B2EC25427A205E500993957 /* BetshopModel.swift in Sources */,
 			);
