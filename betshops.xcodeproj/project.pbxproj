@@ -17,6 +17,7 @@
 		5B2EC25727A20A4600993957 /* APIDataParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2EC25627A20A4600993957 /* APIDataParserTests.swift */; };
 		5B2EC25A27A20D1000993957 /* exampleLocations.json in Resources */ = {isa = PBXBuildFile; fileRef = 5B2EC21D27A1EDD800993957 /* exampleLocations.json */; };
 		5B2EC25F27A2100700993957 /* APIDataParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2EC25E27A2100700993957 /* APIDataParser.swift */; };
+		5B2EC26727A2127F00993957 /* BetshopAPIIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2EC26627A2127F00993957 /* BetshopAPIIntegrationTests.swift */; };
 		5B566B66279FE88B004BA1B4 /* betshopsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B566B65279FE88B004BA1B4 /* betshopsApp.swift */; };
 		5B566B68279FE88B004BA1B4 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B566B67279FE88B004BA1B4 /* MapView.swift */; };
 		5B566B6A279FE88E004BA1B4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B566B69279FE88E004BA1B4 /* Assets.xcassets */; };
@@ -45,6 +46,8 @@
 		5B2EC24327A205B200993957 /* BetshopAPITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BetshopAPITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B2EC25627A20A4600993957 /* APIDataParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIDataParserTests.swift; sourceTree = "<group>"; };
 		5B2EC25E27A2100700993957 /* APIDataParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIDataParser.swift; sourceTree = "<group>"; };
+		5B2EC26427A2127F00993957 /* BetshopAPIIntegrationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BetshopAPIIntegrationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B2EC26627A2127F00993957 /* BetshopAPIIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetshopAPIIntegrationTests.swift; sourceTree = "<group>"; };
 		5B566B62279FE88B004BA1B4 /* betshops.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = betshops.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B566B65279FE88B004BA1B4 /* betshopsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = betshopsApp.swift; sourceTree = "<group>"; };
 		5B566B67279FE88B004BA1B4 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
@@ -73,6 +76,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B2EC24427A205B200993957 /* BetshopAPI.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5B2EC26127A2127F00993957 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -133,12 +143,21 @@
 			path = BetshopAPITests;
 			sourceTree = "<group>";
 		};
+		5B2EC26527A2127F00993957 /* BetshopAPIIntegrationTests */ = {
+			isa = PBXGroup;
+			children = (
+				5B2EC26627A2127F00993957 /* BetshopAPIIntegrationTests.swift */,
+			);
+			path = BetshopAPIIntegrationTests;
+			sourceTree = "<group>";
+		};
 		5B566B59279FE88B004BA1B4 = {
 			isa = PBXGroup;
 			children = (
 				5B566B64279FE88B004BA1B4 /* betshops */,
 				5B2EC23B27A205B200993957 /* BetshopAPI */,
 				5B2EC24727A205B200993957 /* BetshopAPITests */,
+				5B2EC26527A2127F00993957 /* BetshopAPIIntegrationTests */,
 				5B566B63279FE88B004BA1B4 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -150,6 +169,7 @@
 				5B2EC22D27A202D300993957 /* BetshopTests.xctest */,
 				5B2EC23A27A205B200993957 /* BetshopAPI.framework */,
 				5B2EC24327A205B200993957 /* BetshopAPITests.xctest */,
+				5B2EC26427A2127F00993957 /* BetshopAPIIntegrationTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -240,6 +260,23 @@
 			productReference = 5B2EC24327A205B200993957 /* BetshopAPITests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		5B2EC26327A2127F00993957 /* BetshopAPIIntegrationTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5B2EC26827A2127F00993957 /* Build configuration list for PBXNativeTarget "BetshopAPIIntegrationTests" */;
+			buildPhases = (
+				5B2EC26027A2127F00993957 /* Sources */,
+				5B2EC26127A2127F00993957 /* Frameworks */,
+				5B2EC26227A2127F00993957 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BetshopAPIIntegrationTests;
+			productName = BetshopAPIIntegrationTests;
+			productReference = 5B2EC26427A2127F00993957 /* BetshopAPIIntegrationTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		5B566B61279FE88B004BA1B4 /* betshops */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5B566B86279FE88E004BA1B4 /* Build configuration list for PBXNativeTarget "betshops" */;
@@ -276,6 +313,9 @@
 					5B2EC24227A205B200993957 = {
 						CreatedOnToolsVersion = 13.2.1;
 					};
+					5B2EC26327A2127F00993957 = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
 					5B566B61279FE88B004BA1B4 = {
 						CreatedOnToolsVersion = 13.2.1;
 					};
@@ -298,6 +338,7 @@
 				5B2EC22C27A202D300993957 /* BetshopTests */,
 				5B2EC23927A205B200993957 /* BetshopAPI */,
 				5B2EC24227A205B200993957 /* BetshopAPITests */,
+				5B2EC26327A2127F00993957 /* BetshopAPIIntegrationTests */,
 			);
 		};
 /* End PBXProject section */
@@ -322,6 +363,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B2EC25A27A20D1000993957 /* exampleLocations.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5B2EC26227A2127F00993957 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -362,6 +410,14 @@
 			files = (
 				5B2EC25127A205BD00993957 /* DataMapperTests.swift in Sources */,
 				5B2EC25727A20A4600993957 /* APIDataParserTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5B2EC26027A2127F00993957 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5B2EC26727A2127F00993957 /* BetshopAPIIntegrationTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -509,6 +565,40 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = halonso.BetshopAPITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		5B2EC26927A2127F00993957 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = halonso.BetshopAPIIntegrationTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5B2EC26A27A2127F00993957 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = halonso.BetshopAPIIntegrationTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -720,6 +810,15 @@
 			buildConfigurations = (
 				5B2EC24D27A205B200993957 /* Debug */,
 				5B2EC24E27A205B200993957 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5B2EC26827A2127F00993957 /* Build configuration list for PBXNativeTarget "BetshopAPIIntegrationTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5B2EC26927A2127F00993957 /* Debug */,
+				5B2EC26A27A2127F00993957 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
