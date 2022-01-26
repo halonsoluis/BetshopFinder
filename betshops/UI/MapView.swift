@@ -21,13 +21,6 @@ struct MapView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        MapView()
-            .previewDevice("iPhone 13 mini")
-    }
-}
-
 extension MapView {
     private static let munich = CLLocationCoordinate2D(
         latitude: 48.137154,
@@ -37,4 +30,11 @@ extension MapView {
         latitudeDelta: 0.1,
         longitudeDelta: 0.1
     )
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        MapView()
+            .previewDevice("iPhone 13 mini")
+    }
 }

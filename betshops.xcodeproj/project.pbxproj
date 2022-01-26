@@ -14,7 +14,7 @@
 		5B566B68279FE88B004BA1B4 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B566B67279FE88B004BA1B4 /* MapView.swift */; };
 		5B566B6A279FE88E004BA1B4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B566B69279FE88E004BA1B4 /* Assets.xcassets */; };
 		5B566B6D279FE88E004BA1B4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B566B6C279FE88E004BA1B4 /* Preview Assets.xcassets */; };
-		5B566B77279FE88E004BA1B4 /* betshopsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B566B76279FE88E004BA1B4 /* betshopsTests.swift */; };
+		5B566B77279FE88E004BA1B4 /* DataMapperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B566B76279FE88E004BA1B4 /* DataMapperTests.swift */; };
 		5B566B81279FE88E004BA1B4 /* betshopsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B566B80279FE88E004BA1B4 /* betshopsUITests.swift */; };
 		5B566B83279FE88E004BA1B4 /* betshopsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B566B82279FE88E004BA1B4 /* betshopsUITestsLaunchTests.swift */; };
 /* End PBXBuildFile section */
@@ -46,7 +46,7 @@
 		5B566B69279FE88E004BA1B4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5B566B6C279FE88E004BA1B4 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5B566B72279FE88E004BA1B4 /* betshopsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = betshopsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		5B566B76279FE88E004BA1B4 /* betshopsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = betshopsTests.swift; sourceTree = "<group>"; };
+		5B566B76279FE88E004BA1B4 /* DataMapperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataMapperTests.swift; sourceTree = "<group>"; };
 		5B566B7C279FE88E004BA1B4 /* betshopsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = betshopsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B566B80279FE88E004BA1B4 /* betshopsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = betshopsUITests.swift; sourceTree = "<group>"; };
 		5B566B82279FE88E004BA1B4 /* betshopsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = betshopsUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -81,7 +81,6 @@
 			isa = PBXGroup;
 			children = (
 				5B566B69279FE88E004BA1B4 /* Assets.xcassets */,
-				5B566B6B279FE88E004BA1B4 /* Preview Content */,
 				5B566B67279FE88B004BA1B4 /* MapView.swift */,
 				5B2EC22427A1F1D300993957 /* BetshopModel.swift */,
 			);
@@ -131,6 +130,7 @@
 				5B566B65279FE88B004BA1B4 /* betshopsApp.swift */,
 				5B2EC22227A1F0BA00993957 /* API */,
 				5B2EC22127A1F07100993957 /* UI */,
+				5B566B6B279FE88E004BA1B4 /* Preview Content */,
 			);
 			path = betshops;
 			sourceTree = "<group>";
@@ -146,7 +146,7 @@
 		5B566B75279FE88E004BA1B4 /* betshopsTests */ = {
 			isa = PBXGroup;
 			children = (
-				5B566B76279FE88E004BA1B4 /* betshopsTests.swift */,
+				5B566B76279FE88E004BA1B4 /* DataMapperTests.swift */,
 			);
 			path = betshopsTests;
 			sourceTree = "<group>";
@@ -302,7 +302,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5B566B77279FE88E004BA1B4 /* betshopsTests.swift in Sources */,
+				5B566B77279FE88E004BA1B4 /* DataMapperTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
