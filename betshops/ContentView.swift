@@ -23,11 +23,13 @@ struct ContentView: View {
 
     var body: some View {
         Map(coordinateRegion: $mapRegion)
+            .ignoresSafeArea()
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .previewDevice("iPhone 13 mini")
     }
 }
