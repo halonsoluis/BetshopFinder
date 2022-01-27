@@ -1,12 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "Asset 57.pdf",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Asset 57@2x.png",
+      "filename" : "Asset 57.pdf",
       "idiom" : "universal",
       "scale" : "2x"
     },
@@ -18,5 +17,8 @@
   "info" : {
     "author" : "xcode",
     "version" : 1
+  },
+  "properties" : {
+    "template-rendering-intent" : "original"
   }
 }
