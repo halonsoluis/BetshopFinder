@@ -7,9 +7,18 @@
 
 import Foundation
 
-class SuperologyBetshopAPI: BetshopAPI {
-    func stores(in area: Area) async throws -> [BetshopModel] {
-        let url = BetshopDataRetriever().urlForBetshopsInBoundingBox(
+public class SuperologyBetshopAPI: BetshopAPI {
+    let parser: APIDataParser
+    let dataRetriever: BetshopDataRetriever
+
+    init(parser: APIDataParser = APIDataParser(),
+         dataRetriever: BetshopDataRetriever = BetshopDataRetriever()) {
+        self.parser = parser
+        self.dataRetriever = dataRetriever
+    }
+
+    public func stores(in area: Area) async throws -> [BetshopModel] {
+        let url = dataRetriever.urlForBetshopsInBoundingBox(
             topRightLatitude: area.topRight.latitude,
             topRightLongitude: area.topRight.longitude,
             bottomLeftLatitude: area.bottomLeft.latitude,
@@ -20,8 +29,18 @@ class SuperologyBetshopAPI: BetshopAPI {
             return []
         }
 
-        let models = try APIDataParser().decode(dataURL: url)
+        let models = try parser.decode(dataURL: url)
 
         return models.map(DataMapper.buildModel)
+    }
+}
+
+
+extension SuperologyBetshopAPI {
+    public static func defaultBetshopAPI() -> BetshopAPI {
+        SuperologyBetshopAPI(
+            parser: APIDataParser(),
+            dataRetriever: BetshopDataRetriever()
+        )
     }
 }
