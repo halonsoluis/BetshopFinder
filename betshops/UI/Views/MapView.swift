@@ -30,18 +30,7 @@ struct MapView: View {
     }
 }
 
-struct MapAnnotationView: View {
-    let selected: Bool
-
-    var body: some View {
-        Image(selected ? "pin.selected" : "pin")
-            .resizable()
-            .padding()
-    }
-}
-
-
-struct ContentView_Previews: PreviewProvider {
+struct MapView_Previews: PreviewProvider {
     static var previews: some View {
         MapView()
             .previewDevice("iPhone 13 mini")

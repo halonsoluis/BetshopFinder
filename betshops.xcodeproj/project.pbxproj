@@ -25,6 +25,7 @@
 		5B2EC27E27A2BA9F00993957 /* DataMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2EC22627A1FC1B00993957 /* DataMapper.swift */; };
 		5B2EC28027A2BFEF00993957 /* Betshop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2EC27F27A2BFEF00993957 /* Betshop.swift */; };
 		5B2EC28227A2CEBF00993957 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2EC28127A2CEBF00993957 /* MapViewModel.swift */; };
+		5B2EC28427A2D43A00993957 /* MapAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2EC28327A2D43900993957 /* MapAnnotationView.swift */; };
 		5B566B66279FE88B004BA1B4 /* betshopsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B566B65279FE88B004BA1B4 /* betshopsApp.swift */; };
 		5B566B68279FE88B004BA1B4 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B566B67279FE88B004BA1B4 /* MapView.swift */; };
 		5B566B6A279FE88E004BA1B4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B566B69279FE88E004BA1B4 /* Assets.xcassets */; };
@@ -81,6 +82,7 @@
 		5B2EC27327A2254A00993957 /* URLSession+CompatibilityAsyncAwaitExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+CompatibilityAsyncAwaitExtension.swift"; sourceTree = "<group>"; };
 		5B2EC27F27A2BFEF00993957 /* Betshop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Betshop.swift; sourceTree = "<group>"; };
 		5B2EC28127A2CEBF00993957 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
+		5B2EC28327A2D43900993957 /* MapAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAnnotationView.swift; sourceTree = "<group>"; };
 		5B566B62279FE88B004BA1B4 /* betshops.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = betshops.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B566B65279FE88B004BA1B4 /* betshopsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = betshopsApp.swift; sourceTree = "<group>"; };
 		5B566B67279FE88B004BA1B4 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
@@ -133,9 +135,9 @@
 		5B2EC22127A1F07100993957 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				5B2EC28627A2D4B400993957 /* ViewModel */,
+				5B2EC28527A2D4A800993957 /* Views */,
 				5B566B69279FE88E004BA1B4 /* Assets.xcassets */,
-				5B566B67279FE88B004BA1B4 /* MapView.swift */,
-				5B2EC28127A2CEBF00993957 /* MapViewModel.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -195,6 +197,23 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5B2EC28527A2D4A800993957 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5B566B67279FE88B004BA1B4 /* MapView.swift */,
+				5B2EC28327A2D43900993957 /* MapAnnotationView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		5B2EC28627A2D4B400993957 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				5B2EC28127A2CEBF00993957 /* MapViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		5B566B59279FE88B004BA1B4 = {
@@ -477,6 +496,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B2EC28427A2D43A00993957 /* MapAnnotationView.swift in Sources */,
 				5B566B68279FE88B004BA1B4 /* MapView.swift in Sources */,
 				5B2EC28027A2BFEF00993957 /* Betshop.swift in Sources */,
 				5B566B66279FE88B004BA1B4 /* betshopsApp.swift in Sources */,
