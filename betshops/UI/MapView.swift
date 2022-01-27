@@ -34,8 +34,9 @@ struct MapView: View {
     var body: some View {
         Map(coordinateRegion: $mapRegion, annotationItems: annotations, annotationContent: { betshop in
             MapAnnotation(coordinate: betshop.location) {
-                Image(systemName: "mappin.circle.fill")
-                    .font(.largeTitle)
+                Image("pin")
+                    .resizable()
+                    .frame(width: 40, height: 60)
             }
 
         })
@@ -49,8 +50,8 @@ extension MapView {
         longitude: 11.576124
     )
     private static let defaultSpan = MKCoordinateSpan(
-        latitudeDelta: 0.1,
-        longitudeDelta: 0.1
+        latitudeDelta: 0.01,
+        longitudeDelta: 0.01
     )
 }
 
