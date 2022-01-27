@@ -14,14 +14,18 @@ struct MapView: View {
 
     var body: some View {
         Map(coordinateRegion: $viewModel.mapRegion,
-            annotationItems: viewModel.annotations,
-            annotationContent: { betshop in
+            interactionModes: .all,
+            showsUserLocation: true,
+            userTrackingMode: .none,
+            annotationItems: viewModel.annotations, annotationContent: { betshop in
+
             MapAnnotation(coordinate: betshop.location) {
                 MapAnnotationView(selected: betshop == viewModel.selected)
                     .onTapGesture {
                         viewModel.selectedPin(betshop)
                     }
             }
+
         }).ignoresSafeArea()
     }
 }
