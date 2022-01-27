@@ -47,4 +47,18 @@ class BetshopDataRetrieverTests: XCTestCase {
         XCTAssertEqual(url?.absoluteString, expectedURL)
     }
 
+    func test_load_fromLocalURLReturnsModels() async throws {
+        let sut = BetshopDataRetriever()
+
+        guard let url = Bundle(for: type(of: self)).url(forResource: "exampleLocations", withExtension: "json") else {
+            XCTFail("Example data not found")
+            return
+        }
+
+        let betshops = try await sut.load(url: url)
+
+        XCTAssertEqual(betshops.count, 3)
+
+    }
+
 }

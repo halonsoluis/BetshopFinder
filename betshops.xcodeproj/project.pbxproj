@@ -14,9 +14,7 @@
 		5B2EC25227A205DD00993957 /* DecodedBetshop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2EC21F27A1EE5200993957 /* DecodedBetshop.swift */; };
 		5B2EC25327A205E100993957 /* DataMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2EC22627A1FC1B00993957 /* DataMapper.swift */; };
 		5B2EC25427A205E500993957 /* BetshopModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2EC22427A1F1D300993957 /* BetshopModel.swift */; };
-		5B2EC25727A20A4600993957 /* APIDataParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2EC25627A20A4600993957 /* APIDataParserTests.swift */; };
 		5B2EC25A27A20D1000993957 /* exampleLocations.json in Resources */ = {isa = PBXBuildFile; fileRef = 5B2EC21D27A1EDD800993957 /* exampleLocations.json */; };
-		5B2EC25F27A2100700993957 /* APIDataParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2EC25E27A2100700993957 /* APIDataParser.swift */; };
 		5B2EC26727A2127F00993957 /* BetshopAPIIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2EC26627A2127F00993957 /* BetshopAPIIntegrationTests.swift */; };
 		5B2EC26C27A2137C00993957 /* BetshopDataRetriever.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2EC26B27A2137C00993957 /* BetshopDataRetriever.swift */; };
 		5B2EC26E27A2176600993957 /* BetshopDataRetrieverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2EC26D27A2176600993957 /* BetshopDataRetrieverTests.swift */; };
@@ -48,8 +46,6 @@
 		5B2EC23C27A205B200993957 /* BetshopAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BetshopAPI.h; sourceTree = "<group>"; };
 		5B2EC23D27A205B200993957 /* BetshopAPI.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = BetshopAPI.docc; sourceTree = "<group>"; };
 		5B2EC24327A205B200993957 /* BetshopAPITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BetshopAPITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		5B2EC25627A20A4600993957 /* APIDataParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIDataParserTests.swift; sourceTree = "<group>"; };
-		5B2EC25E27A2100700993957 /* APIDataParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIDataParser.swift; sourceTree = "<group>"; };
 		5B2EC26427A2127F00993957 /* BetshopAPIIntegrationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BetshopAPIIntegrationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B2EC26627A2127F00993957 /* BetshopAPIIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetshopAPIIntegrationTests.swift; sourceTree = "<group>"; };
 		5B2EC26B27A2137C00993957 /* BetshopDataRetriever.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetshopDataRetriever.swift; sourceTree = "<group>"; };
@@ -136,7 +132,6 @@
 				5B2EC22427A1F1D300993957 /* BetshopModel.swift */,
 				5B2EC23C27A205B200993957 /* BetshopAPI.h */,
 				5B2EC23D27A205B200993957 /* BetshopAPI.docc */,
-				5B2EC25E27A2100700993957 /* APIDataParser.swift */,
 				5B2EC26B27A2137C00993957 /* BetshopDataRetriever.swift */,
 				5B2EC26F27A21A4D00993957 /* BetshopAPI.swift */,
 				5B2EC27127A21BC700993957 /* SuperologyBetshopAPI.swift */,
@@ -149,7 +144,6 @@
 			children = (
 				5B2EC22327A1F0E100993957 /* FakeData */,
 				5B566B76279FE88E004BA1B4 /* DataMapperTests.swift */,
-				5B2EC25627A20A4600993957 /* APIDataParserTests.swift */,
 				5B2EC26D27A2176600993957 /* BetshopDataRetrieverTests.swift */,
 			);
 			path = BetshopAPITests;
@@ -411,7 +405,6 @@
 				5B2EC26C27A2137C00993957 /* BetshopDataRetriever.swift in Sources */,
 				5B2EC25227A205DD00993957 /* DecodedBetshop.swift in Sources */,
 				5B2EC25327A205E100993957 /* DataMapper.swift in Sources */,
-				5B2EC25F27A2100700993957 /* APIDataParser.swift in Sources */,
 				5B2EC27027A21A4D00993957 /* BetshopAPI.swift in Sources */,
 				5B2EC27227A21BC700993957 /* SuperologyBetshopAPI.swift in Sources */,
 				5B2EC23E27A205B200993957 /* BetshopAPI.docc in Sources */,
@@ -425,7 +418,6 @@
 			files = (
 				5B2EC26E27A2176600993957 /* BetshopDataRetrieverTests.swift in Sources */,
 				5B2EC25127A205BD00993957 /* DataMapperTests.swift in Sources */,
-				5B2EC25727A20A4600993957 /* APIDataParserTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
