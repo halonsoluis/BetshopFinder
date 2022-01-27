@@ -7,7 +7,7 @@
 
 import Foundation
 
-class BetshopDataRetriever {
+struct BetshopDataRetriever {
 
     private var betshopAPI: URLComponents {
         var betshopAPI = URLComponents()

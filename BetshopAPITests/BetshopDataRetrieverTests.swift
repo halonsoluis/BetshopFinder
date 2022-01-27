@@ -25,4 +25,26 @@ class BetshopDataRetrieverTests: XCTestCase {
         XCTAssertEqual(url?.absoluteString, expectedURL)
     }
 
+    func test_doesNotGenerateURLWithRepeatedQuery_afterSequentialCalls() throws {
+        let sut = BetshopDataRetriever()
+
+        _ = sut.urlForBetshopsInBoundingBox(
+            topRightLatitude: 46.16124,
+            topRightLongitude: 13.60912,
+            bottomLeftLatitude: 42.12229,
+            bottomLeftLongitude: 11.52741
+        )
+
+        let url = sut.urlForBetshopsInBoundingBox(
+            topRightLatitude: 48.16124,    //------(lat, long)
+            topRightLongitude: 11.60912,   //----------------
+            bottomLeftLatitude: 48.12229,  //----------------
+            bottomLeftLongitude: 11.52741  //(lat, long)-----
+        )
+
+        let expectedURL = "https://interview.superology.dev/betshops?boundingBox=48.16124,11.60912,48.12229,11.52741"
+
+        XCTAssertEqual(url?.absoluteString, expectedURL)
+    }
+
 }
