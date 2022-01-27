@@ -15,7 +15,7 @@ struct BetshopModel: Identifiable {
     let address: String
     let topLevelAddress: String
 
-    let location: (lat: Double, lng: Double)
+    let location: CLLocationCoordinate2D
 
     //Harcoded Data not provided by the API
     static let workingHours = (opening: "08:00", closing:"16:00")
@@ -23,7 +23,7 @@ struct BetshopModel: Identifiable {
 
 struct MapView: View {
     let annotations = [
-        BetshopModel(id: 2350329, name: "Lenbachplatz 7", address: "80333 Muenchen", topLevelAddress: "Muenchen - Bayern", location: (48.1405515, 11.5689638))
+        BetshopModel(id: 2350329, name: "Lenbachplatz 7", address: "80333 Muenchen", topLevelAddress: "Muenchen - Bayern", location: CLLocationCoordinate2D(latitude: 48.1405515, longitude: 11.5689638))
     ]
 
     @State var mapRegion = MKCoordinateRegion(
@@ -33,7 +33,11 @@ struct MapView: View {
 
     var body: some View {
         Map(coordinateRegion: $mapRegion, annotationItems: annotations, annotationContent: { betshop in
-            MapPin(coordinate: CLLocationCoordinate2D(latitude: betshop.location.lat, longitude: betshop.location.lng), tint: .red)
+            MapAnnotation(coordinate: betshop.location) {
+                Image(systemName: "mappin.circle.fill")
+                    .font(.largeTitle)
+            }
+
         })
             .ignoresSafeArea()
     }
