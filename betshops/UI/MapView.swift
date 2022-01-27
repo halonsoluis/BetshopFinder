@@ -8,56 +8,39 @@
 import SwiftUI
 import MapKit
 
-struct BetshopModel: Identifiable {
-    let id: Int64
-
-    let name: String
-    let address: String
-    let topLevelAddress: String
-
-    let location: CLLocationCoordinate2D
-
-    //Harcoded Data not provided by the API
-    static let workingHours = (opening: "08:00", closing:"16:00")
-}
-
 struct MapView: View {
-    let annotations = [
-        BetshopModel(id: 2350329, name: "Lenbachplatz 7", address: "80333 Muenchen", topLevelAddress: "Muenchen - Bayern", location: CLLocationCoordinate2D(latitude: 48.1405515, longitude: 11.5689638))
-    ]
 
-    @State var mapRegion = MKCoordinateRegion(
-        center: munich,
-        span: defaultSpan
-    )
+    @EnvironmentObject private var viewModel: MapViewModel
 
     var body: some View {
-        Map(coordinateRegion: $mapRegion, annotationItems: annotations, annotationContent: { betshop in
+        Map(coordinateRegion: $viewModel.mapRegion,
+            annotationItems: viewModel.annotations,
+            annotationContent: { betshop in
             MapAnnotation(coordinate: betshop.location) {
-                Image("pin")
-                    .resizable()
-                    .frame(width: 40, height: 60)
+                MapAnnotationView(selected: betshop == viewModel.selected)
+                    .onTapGesture {
+                        viewModel.selectedPin(betshop)
+                    }
             }
-
-        })
-            .ignoresSafeArea()
+        }).ignoresSafeArea()
     }
 }
 
-extension MapView {
-    private static let munich = CLLocationCoordinate2D(
-        latitude: 48.137154,
-        longitude: 11.576124
-    )
-    private static let defaultSpan = MKCoordinateSpan(
-        latitudeDelta: 0.01,
-        longitudeDelta: 0.01
-    )
+struct MapAnnotationView: View {
+    let selected: Bool
+
+    var body: some View {
+        Image(selected ? "pin.selected" : "pin")
+            .resizable()
+            .padding()
+    }
 }
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         MapView()
             .previewDevice("iPhone 13 mini")
+            .environmentObject(MapViewModel())
     }
 }

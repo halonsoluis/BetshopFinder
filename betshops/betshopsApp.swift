@@ -12,6 +12,7 @@ struct betshopsApp: App {
     var body: some Scene {
         WindowGroup {
             MapView()
+                .environmentObject(MapViewModel())
         }
     }
 }
