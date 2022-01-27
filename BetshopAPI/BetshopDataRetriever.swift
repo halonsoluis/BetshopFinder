@@ -9,13 +9,13 @@ import Foundation
 
 struct BetshopDataRetriever {
 
-    private var betshopAPI: URLComponents {
+    private let betshopAPI: URLComponents = {
         var betshopAPI = URLComponents()
         betshopAPI.scheme = "https"
         betshopAPI.host = "interview.superology.dev"
         betshopAPI.path = "/betshops"
         return betshopAPI
-    }
+    }()
 
     func urlForBetshopsInBoundingBox(
         topRightLatitude:Double,
