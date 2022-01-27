@@ -21,6 +21,8 @@
 		5B2EC27027A21A4D00993957 /* BetshopAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2EC26F27A21A4D00993957 /* BetshopAPI.swift */; };
 		5B2EC27227A21BC700993957 /* SuperologyBetshopAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2EC27127A21BC700993957 /* SuperologyBetshopAPI.swift */; };
 		5B2EC27427A2254A00993957 /* URLSession+CompatibilityAsyncAwaitExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2EC27327A2254A00993957 /* URLSession+CompatibilityAsyncAwaitExtension.swift */; };
+		5B2EC27627A225B700993957 /* BetshopAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B2EC23A27A205B200993957 /* BetshopAPI.framework */; };
+		5B2EC27727A225B700993957 /* BetshopAPI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5B2EC23A27A205B200993957 /* BetshopAPI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5B566B66279FE88B004BA1B4 /* betshopsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B566B65279FE88B004BA1B4 /* betshopsApp.swift */; };
 		5B566B68279FE88B004BA1B4 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B566B67279FE88B004BA1B4 /* MapView.swift */; };
 		5B566B6A279FE88E004BA1B4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B566B69279FE88E004BA1B4 /* Assets.xcassets */; };
@@ -35,7 +37,28 @@
 			remoteGlobalIDString = 5B2EC23927A205B200993957;
 			remoteInfo = BetshopAPI;
 		};
+		5B2EC27827A225B700993957 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5B566B5A279FE88B004BA1B4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5B2EC23927A205B200993957;
+			remoteInfo = BetshopAPI;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		5B2EC27A27A225B700993957 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				5B2EC27727A225B700993957 /* BetshopAPI.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		5B2EC21D27A1EDD800993957 /* exampleLocations.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = exampleLocations.json; sourceTree = "<group>"; };
@@ -96,6 +119,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B2EC27627A225B700993957 /* BetshopAPI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -160,6 +184,13 @@
 			path = BetshopAPIIntegrationTests;
 			sourceTree = "<group>";
 		};
+		5B2EC27527A225B700993957 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		5B566B59279FE88B004BA1B4 = {
 			isa = PBXGroup;
 			children = (
@@ -168,6 +199,7 @@
 				5B2EC24727A205B200993957 /* BetshopAPITests */,
 				5B2EC26527A2127F00993957 /* BetshopAPIIntegrationTests */,
 				5B566B63279FE88B004BA1B4 /* Products */,
+				5B2EC27527A225B700993957 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -293,10 +325,12 @@
 				5B566B5E279FE88B004BA1B4 /* Sources */,
 				5B566B5F279FE88B004BA1B4 /* Frameworks */,
 				5B566B60279FE88B004BA1B4 /* Resources */,
+				5B2EC27A27A225B700993957 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				5B2EC27927A225B700993957 /* PBXTargetDependency */,
 			);
 			name = betshops;
 			productName = betshops;
@@ -449,6 +483,11 @@
 			isa = PBXTargetDependency;
 			target = 5B2EC23927A205B200993957 /* BetshopAPI */;
 			targetProxy = 5B2EC24527A205B200993957 /* PBXContainerItemProxy */;
+		};
+		5B2EC27927A225B700993957 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5B2EC23927A205B200993957 /* BetshopAPI */;
+			targetProxy = 5B2EC27827A225B700993957 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -757,6 +796,7 @@
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+					"@executable_path/../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = halonso.betshops;
@@ -786,6 +826,7 @@
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+					"@executable_path/../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = halonso.betshops;
