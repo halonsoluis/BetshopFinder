@@ -14,6 +14,7 @@ class APIDataParser {
     }
 
     func decode(dataURL url: URL) throws -> [DecodedBetshop] {
+//        This work sync. Maybe better to leverage concurrency?
         let jsonData = try Data(contentsOf: url)
         let capsule = try JSONDecoder().decode(DataCapsule.self, from: jsonData)
         return capsule.betshops

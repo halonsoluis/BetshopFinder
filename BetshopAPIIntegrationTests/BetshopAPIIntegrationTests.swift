@@ -23,4 +23,18 @@ class BetshopAPIIntegrationTests: XCTestCase {
 
         XCTAssertEqual(betshops.count, 109)
     }
+
+    func test_APIUsingBetshopDataRetriever_works() throws {
+
+        let url = BetshopDataRetriever().urlForBetshopsInBoundingBox(
+            topRightLatitude: 48.16124,    //------(lat, long)
+            topRightLongitude: 11.60912,   //----------------
+            bottomLeftLatitude: 48.12229,  //----------------
+            bottomLeftLongitude: 11.52741  //(lat, long)-----
+        )
+
+        let betshops = try APIDataParser().decode(dataURL: url!)
+
+        XCTAssertEqual(betshops.count, 109)
+    }
 }
