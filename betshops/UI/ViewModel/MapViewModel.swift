@@ -6,6 +6,7 @@
 //
 
 import MapKit
+import BetshopAPI
 
 class MapViewModel: ObservableObject {
     @Published var annotations: [Betshop]
@@ -22,7 +23,7 @@ class MapViewModel: ObservableObject {
     )
 
     init() {
-        annotations = Betshop.exampleBetshopList()
+        annotations = []
         mapRegion = MKCoordinateRegion(
             center: munich,
             span: defaultSpan
@@ -33,4 +34,38 @@ class MapViewModel: ObservableObject {
         self.selected = betshop
     }
 
+    func regionHasChanged() {
+        Task {
+            let betshopsFromAPI = try await SuperologyBetshopAPI.defaultBetshopAPI().stores(in: boundingBox)
+
+            DispatchQueue.main.async { [self] in
+                annotations = betshopsFromAPI.map(Betshop.init)
+            }
+        }
+    }
+
+    private var boundingBox: Area {
+        //Using approach found @ https://stackoverflow.com/a/12607213/2683201 for defining the bounding box
+        let latMin = mapRegion.center.latitude - 0.5 * mapRegion.span.latitudeDelta;
+        let latMax = mapRegion.center.latitude + 0.5 * mapRegion.span.latitudeDelta;
+        let lonMin = mapRegion.center.longitude - 0.5 * mapRegion.span.longitudeDelta;
+        let lonMax = mapRegion.center.longitude + 0.5 * mapRegion.span.longitudeDelta;
+
+        return Area(
+            topRight: Location(latitude: latMax, longitude: lonMax),
+             bottomLeft: Location(latitude: latMin, longitude: lonMin)
+        )
+    }
+}
+
+extension Betshop {
+    init(model: BetshopModel) {
+        self.init(
+            id: model.id,
+            name: model.name,
+            address: model.address,
+            topLevelAddress: model.topLevelAddress,
+            location: CLLocationCoordinate2D(latitude: model.location.lat, longitude: model.location.lng)
+        )
+    }
 }

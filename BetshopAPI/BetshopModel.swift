@@ -8,11 +8,11 @@
 import Foundation
 
 public struct BetshopModel {
-    let id: Int64
+    public let id: Int64
 
-    let name: String
-    let address: String
-    let topLevelAddress: String
+    public let name: String
+    public let address: String
+    public let topLevelAddress: String
 
-    let location: (lat: Double, lng: Double)
+    public let location: (lat: Double, lng: Double)
 }
