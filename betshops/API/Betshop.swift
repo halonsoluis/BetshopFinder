@@ -24,3 +24,9 @@ struct Betshop: Identifiable, Equatable {
     //Harcoded Data not provided by the API
     static let workingHours = (opening: "08:00", closing:"16:00")
 }
+
+extension Betshop {
+    var openStatus: String {
+        return "Open Now"
+    }
+}

@@ -35,7 +35,7 @@ struct BetshopStoreDetailsView: View {
                                 .foregroundColor(.black)
 
                             HStack {
-                                Text("Open now")
+                                Text(betshop.openStatus)
                                     .font(.callout)
                                     .foregroundColor(.green)
 
@@ -75,7 +75,7 @@ extension BetshopStoreDetailsView {
     }
 
     func close() {
-
+        
     }
 }
 
