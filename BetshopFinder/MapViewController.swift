@@ -1,13 +1,16 @@
 //
-//  ViewController.swift
+//  MapViewController.swift
 //  BetshopFinder
 //
 //  Created by Hugo Alonso on 29/01/2022.
 //
 
 import UIKit
+import MapKit
 
-class ViewController: UIViewController {
+class MapViewController: UIViewController {
+
+    @IBOutlet var map: MKMapView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
