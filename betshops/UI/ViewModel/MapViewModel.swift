@@ -35,11 +35,16 @@ class MapViewModel: ObservableObject {
     }
 
     func regionHasChanged() {
-        Task {
-            let betshopsFromAPI = try await SuperologyBetshopAPI.defaultBetshopAPI().stores(in: boundingBox)
+        let mapRegion = self.mapRegion
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            guard mapRegion == self.mapRegion else { return }
 
-            DispatchQueue.main.async { [self] in
-                annotations = betshopsFromAPI.map(Betshop.init)
+            Task {
+                let betshopsFromAPI = try await SuperologyBetshopAPI.defaultBetshopAPI().stores(in: self.boundingBox)
+
+                DispatchQueue.main.async { [self] in
+                    annotations = betshopsFromAPI.map(Betshop.init)
+                }
             }
         }
     }
@@ -53,7 +58,7 @@ class MapViewModel: ObservableObject {
 
         return Area(
             topRight: Location(latitude: latMax, longitude: lonMax),
-             bottomLeft: Location(latitude: latMin, longitude: lonMin)
+            bottomLeft: Location(latitude: latMin, longitude: lonMin)
         )
     }
 }
