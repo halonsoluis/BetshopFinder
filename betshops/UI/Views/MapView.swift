@@ -14,6 +14,12 @@ struct MapView: View {
     var body: some View {
         ZStack(alignment: .bottom) {
 
+            //The map implementation does not perform clustering (not yet supported) https://developer.apple.com/forums/thread/684811
+            //Which leads to a huge loss in performance
+            //This leaves me with 33 options
+            // - Do the clustering manually
+            // - Use MapView from UIKit.
+            // - Limit the amount of pins in the screen randomly (there's no other metric that could help)
             Map(coordinateRegion: $viewModel.mapRegion,
                 interactionModes: .all,
                 showsUserLocation: true,
