@@ -46,10 +46,17 @@ class MapViewModel: ObservableObject {
             guard mapRegion == self.mapRegion else { return }
 
             Task {
-                let betshopsFromAPI = try await SuperologyBetshopAPI.defaultBetshopAPI().stores(in: self.boundingBox)
+                let betshopsFromAPI = try await SuperologyBetshopAPI
+                    .defaultBetshopAPI()
+                    .stores(in: self.boundingBox)
 
+                let maximumAmountInScreen = 20
                 DispatchQueue.main.async { [self] in
-                    annotations = betshopsFromAPI.map(Betshop.init)
+                    annotations = betshopsFromAPI
+                        //Dummy attempt to limit the amount of pins.
+                        //Satisfactory improving the performance
+                        .dropLast(betshopsFromAPI.count > maximumAmountInScreen ? betshopsFromAPI.count - maximumAmountInScreen : 0)
+                        .map(Betshop.init)
                 }
             }
         }
