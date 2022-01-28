@@ -37,14 +37,7 @@ struct BetshopStoreDetailsView: View {
                         Image("close")
                     }
 
-                    HStack {
-                        Image("phone")
-
-                        Text("311-5444")
-                            .font(.headline)
-                    }
-
-                    HStack {
+                    HStack(alignment: .firstTextBaseline, spacing: 16) {
 
                         Text("Open now")
 
