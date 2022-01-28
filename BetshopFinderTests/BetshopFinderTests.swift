@@ -11,8 +11,7 @@ import XCTest
 class MapViewControllerTests: XCTestCase {
 
    func test_whenViewIsLoaded_mapIsLinked() throws {
-       let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-       let sut = storyboard.instantiateInitialViewController() as! MapViewController
+       let sut = makeSUT()
 
        sut.loadViewIfNeeded()
 
@@ -20,12 +19,26 @@ class MapViewControllerTests: XCTestCase {
     }
 
     func test_whenViewIsLoaded_delegateIsSetToController() throws {
-        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        let sut = storyboard.instantiateInitialViewController() as! MapViewController
-
-        sut.loadViewIfNeeded()
+        let sut = makeAndPrepareSUT()
 
         XCTAssertIdentical(sut.map.delegate, sut)
      }
+
+    //MARK: - HELPER METHODS
+
+    private func makeAndPrepareSUT() -> MapViewController {
+        let sut = makeSUT()
+
+        sut.loadViewIfNeeded()
+
+        return sut
+    }
+
+    private func makeSUT() -> MapViewController {
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let sut = storyboard.instantiateInitialViewController() as! MapViewController
+
+        return sut
+    }
 
 }
