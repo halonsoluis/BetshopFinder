@@ -27,19 +27,7 @@ struct MapView: View {
             }
 
         })
-            .onChange(of: viewModel.mapRegion) { newRegion in
-                viewModel.regionHasChanged()
-            }
             .ignoresSafeArea()
-    }
-}
-
-extension MKCoordinateRegion: Equatable {
-    public static func == (lhs: MKCoordinateRegion, rhs: MKCoordinateRegion) -> Bool {
-        return lhs.center.longitude == rhs.center.longitude
-        && lhs.center.latitude == rhs.center.latitude
-        && lhs.span.latitudeDelta == rhs.span.latitudeDelta
-        && lhs.span.longitudeDelta == rhs.span.longitudeDelta
     }
 }
 

@@ -10,7 +10,11 @@ import BetshopAPI
 
 class MapViewModel: ObservableObject {
     @Published var annotations: [Betshop]
-    @Published var mapRegion = MKCoordinateRegion()
+    @Published var mapRegion = MKCoordinateRegion() {
+        didSet {
+            regionHasChanged()
+        }
+    }
     @Published var selected: Betshop?
 
     private let munich = CLLocationCoordinate2D(
@@ -72,5 +76,14 @@ extension Betshop {
             topLevelAddress: model.topLevelAddress,
             location: CLLocationCoordinate2D(latitude: model.location.lat, longitude: model.location.lng)
         )
+    }
+}
+
+extension MKCoordinateRegion: Equatable {
+    public static func == (lhs: MKCoordinateRegion, rhs: MKCoordinateRegion) -> Bool {
+        return lhs.center.longitude == rhs.center.longitude
+        && lhs.center.latitude == rhs.center.latitude
+        && lhs.span.latitudeDelta == rhs.span.latitudeDelta
+        && lhs.span.longitudeDelta == rhs.span.longitudeDelta
     }
 }
