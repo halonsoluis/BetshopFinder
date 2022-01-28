@@ -12,10 +12,7 @@ struct BetshopStoreDetailsView: View {
     let betshop: Betshop
 
     var body: some View {
-
         VStack(alignment: .leading, spacing: 16) {
-
-            Spacer()
 
             ZStack(alignment: .bottom) {
                 Spacer()
@@ -60,8 +57,16 @@ struct BetshopStoreDetailsView: View {
                         }
 
                     }
-                }.padding()
+                }
+                .padding()
+                .background(
+                    RoundedRectangle(cornerRadius: 20)
+                        .foregroundColor(.gray)
+                        .opacity(0.8)
+                        .shadow(radius: 20)
+                )
             }
+            .padding()
         }
     }
 }

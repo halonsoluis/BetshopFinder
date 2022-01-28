@@ -16,6 +16,7 @@ class MapViewModel: ObservableObject {
         }
     }
     @Published var selected: Betshop?
+    @Published var showPresentDetails = false
 
     private let munich = CLLocationCoordinate2D(
         latitude: 48.137154,
@@ -36,6 +37,7 @@ class MapViewModel: ObservableObject {
 
     func selectedPin(_ betshop: Betshop) {
         self.selected = betshop
+        showPresentDetails = true
     }
 
     func regionHasChanged() {

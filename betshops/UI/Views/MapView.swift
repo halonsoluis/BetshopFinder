@@ -9,25 +9,31 @@ import SwiftUI
 import MapKit
 
 struct MapView: View {
-
     @EnvironmentObject private var viewModel: MapViewModel
 
     var body: some View {
-        Map(coordinateRegion: $viewModel.mapRegion,
-            interactionModes: .all,
-            showsUserLocation: true,
-            userTrackingMode: .none,
-            annotationItems: viewModel.annotations, annotationContent: { betshop in
+        ZStack(alignment: .bottom) {
 
-            MapAnnotation(coordinate: betshop.location) {
-                MapAnnotationView(selected: betshop == viewModel.selected)
-                    .onTapGesture {
-                        viewModel.selectedPin(betshop)
-                    }
-            }
+            Map(coordinateRegion: $viewModel.mapRegion,
+                interactionModes: .all,
+                showsUserLocation: true,
+                userTrackingMode: .none,
+                annotationItems: viewModel.annotations, annotationContent: { betshop in
 
-        })
+                MapAnnotation(coordinate: betshop.location) {
+                    MapAnnotationView(selected: betshop == viewModel.selected)
+                        .onTapGesture {
+                            viewModel.selectedPin(betshop)
+                        }
+                }
+
+            })
             .ignoresSafeArea()
+
+            if let selectedBetshop = viewModel.selected {
+                BetshopStoreDetailsView(betshop: selectedBetshop)
+            }
+        }
     }
 }
 
