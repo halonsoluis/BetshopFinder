@@ -50,12 +50,8 @@ class MapViewModel: ObservableObject {
                     .defaultBetshopAPI()
                     .stores(in: self.boundingBox)
 
-                let maximumAmountInScreen = 20
                 DispatchQueue.main.async { [self] in
                     annotations = betshopsFromAPI
-                        //Dummy attempt to limit the amount of pins.
-                        //Satisfactory improving the performance
-                        .dropLast(betshopsFromAPI.count > maximumAmountInScreen ? betshopsFromAPI.count - maximumAmountInScreen : 0)
                         .map(Betshop.init)
                 }
             }

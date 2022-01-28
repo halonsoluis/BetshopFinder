@@ -17,9 +17,8 @@ struct MapView: View {
             //The map implementation does not perform clustering (not yet supported) https://developer.apple.com/forums/thread/684811
             //Which leads to a huge loss in performance
             //This leaves me with 33 options
-            // - Do the clustering manually
-            // - Use MapView from UIKit.
-            // - Limit the amount of pins in the screen randomly (there's no other metric that could help)
+            // - Do the clustering manually - Potential introduction of errors, nice activity, time consuming when there's already something like that implemented in the system.
+            // - Use MapView from UIKit. - Next to try
             Map(coordinateRegion: $viewModel.mapRegion,
                 interactionModes: .all,
                 showsUserLocation: true,
