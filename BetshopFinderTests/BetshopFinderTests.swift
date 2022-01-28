@@ -38,6 +38,10 @@ class MapViewControllerTests: XCTestCase {
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         let sut = storyboard.instantiateInitialViewController() as! MapViewController
 
+        addTeardownBlock { [weak sut] in
+            XCTAssertNil(sut)
+        }
+
         return sut
     }
 
