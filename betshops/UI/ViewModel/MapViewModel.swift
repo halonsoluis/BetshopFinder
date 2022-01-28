@@ -15,8 +15,12 @@ class MapViewModel: ObservableObject {
             regionHasChanged()
         }
     }
-    @Published var selected: Betshop?
-    @Published var showPresentDetails = false
+    @Published var selected: Betshop? {
+        didSet {
+            shouldPresentDetails = selected != nil
+        }
+    }
+    @Published var shouldPresentDetails = false
 
     private let munich = CLLocationCoordinate2D(
         latitude: 48.137154,
@@ -33,11 +37,6 @@ class MapViewModel: ObservableObject {
             center: munich,
             span: defaultSpan
         )
-    }
-
-    func selectedPin(_ betshop: Betshop) {
-        self.selected = betshop
-        showPresentDetails = true
     }
 
     func regionHasChanged() {
@@ -73,13 +72,13 @@ class MapViewModel: ObservableObject {
 }
 
 extension Betshop {
-    init(model: BetshopModel) {
+    convenience init(model: BetshopModel) {
         self.init(
             id: model.id,
             name: model.name,
             address: model.address,
             topLevelAddress: model.topLevelAddress,
-            location: CLLocationCoordinate2D(latitude: model.location.lat, longitude: model.location.lng)
+            coordinate: CLLocationCoordinate2D(latitude: model.location.lat, longitude: model.location.lng)
         )
     }
 }

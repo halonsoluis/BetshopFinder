@@ -88,7 +88,7 @@ struct BetshopStoreDetailsView_Previews: PreviewProvider {
                 name: "name",
                 address: "address",
                 topLevelAddress: "topLevelAddress",
-                location: CLLocationCoordinate2D())
+                coordinate: CLLocationCoordinate2D())
         )
             .previewDevice("iPhone 13 mini")
     }

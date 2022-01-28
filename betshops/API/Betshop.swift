@@ -8,7 +8,7 @@
 import Foundation
 import MapKit
 
-struct Betshop: Identifiable, Equatable {
+class Betshop: NSObject, Identifiable, MKAnnotation {
     static func == (lhs: Betshop, rhs: Betshop) -> Bool {
         lhs.id == rhs.id
     }
@@ -19,10 +19,18 @@ struct Betshop: Identifiable, Equatable {
     let address: String
     let topLevelAddress: String
 
-    let location: CLLocationCoordinate2D
+    var coordinate: CLLocationCoordinate2D
 
     //Harcoded Data not provided by the API
     static let workingHours = (opening: "08:00", closing:"16:00")
+
+    init(id: Int64, name: String, address: String, topLevelAddress: String, coordinate: CLLocationCoordinate2D) {
+        self.id = id
+        self.name = name
+        self.address = address
+        self.topLevelAddress = topLevelAddress
+        self.coordinate = coordinate
+    }
 }
 
 extension Betshop {
