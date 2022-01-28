@@ -23,44 +23,59 @@ struct BetshopStoreDetailsView: View {
 
                         VStack(alignment: .leading, spacing: 16) {
                             Text(betshop.name)
-                                .font(.headline)
+                                .font(.title3)
+                                .foregroundColor(.black)
 
                             Text(betshop.address)
-                                .font(.headline)
+                                .font(.caption)
+                                .foregroundColor(.black)
 
                             Text(betshop.topLevelAddress)
-                                .font(.headline)
+                                .font(.caption)
+                                .foregroundColor(.black)
+
+                            HStack {
+                                Text("Open now")
+                                    .font(.callout)
+                                    .foregroundColor(.green)
+
+                                Spacer()
+
+                                Label("Route", systemImage: "location.magnifyingglass")
+                                    .labelStyle(.titleAndIcon)
+                                    .foregroundColor(.blue)
+                                    .onTapGesture(perform: navigate)
+
+                            }
+
                         }
 
                         Spacer()
 
+                        //Using image as Button does not look right in BigSur
                         Image("close")
-                    }
-
-                    HStack(alignment: .firstTextBaseline, spacing: 16) {
-
-                        Text("Open now")
-
-                        Button {
-
-                        } label: {
-                            Text("Route")
-                                .font(.callout)
-                                .fontWeight(.bold)
-                        }
-
+                            .onTapGesture(perform: close)
                     }
                 }
                 .padding()
                 .background(
                     RoundedRectangle(cornerRadius: 20)
-                        .foregroundColor(.gray)
-                        .opacity(0.8)
+                        .foregroundColor(.white)
                         .shadow(radius: 20)
                 )
             }
             .padding()
         }
+    }
+}
+
+extension BetshopStoreDetailsView {
+    func navigate() {
+
+    }
+
+    func close() {
+
     }
 }
 
