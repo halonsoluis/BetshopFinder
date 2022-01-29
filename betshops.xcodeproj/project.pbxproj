@@ -11,6 +11,7 @@
 		5B0B7C4027A5A8DC00BE22CA /* ThreadSafeMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0B7C3F27A5A8DC00BE22CA /* ThreadSafeMapView.swift */; };
 		5B0B7C4627A5ADA600BE22CA /* OpenHoursCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0B7C4527A5ADA600BE22CA /* OpenHoursCalculatorTests.swift */; };
 		5B0B7C4827A5B4F300BE22CA /* OpenHoursCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0B7C4727A5B4F300BE22CA /* OpenHoursCalculator.swift */; };
+		5B0B7C4927A5B65A00BE22CA /* OpenHoursCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0B7C4727A5B4F300BE22CA /* OpenHoursCalculator.swift */; };
 		5B2EC23E27A205B200993957 /* BetshopAPI.docc in Sources */ = {isa = PBXBuildFile; fileRef = 5B2EC23D27A205B200993957 /* BetshopAPI.docc */; };
 		5B2EC24427A205B200993957 /* BetshopAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B2EC23A27A205B200993957 /* BetshopAPI.framework */; };
 		5B2EC24A27A205B200993957 /* BetshopAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B2EC23C27A205B200993957 /* BetshopAPI.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -822,6 +823,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B2EC28827A2E7FC00993957 /* BetshopStoreDetails.swift in Sources */,
+				5B0B7C4927A5B65A00BE22CA /* OpenHoursCalculator.swift in Sources */,
 				5B2EC28C27A489F100993957 /* MapView2.swift in Sources */,
 				5B2EC28427A2D43A00993957 /* MapAnnotationView.swift in Sources */,
 				5B566B68279FE88B004BA1B4 /* MapView.swift in Sources */,

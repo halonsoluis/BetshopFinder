@@ -35,6 +35,6 @@ class Betshop: NSObject, Identifiable, MKAnnotation {
 
 extension Betshop {
     var openStatus: String {
-        return "Open Now"
+        return OpenHoursCalculator.storeStatus()
     }
 }
