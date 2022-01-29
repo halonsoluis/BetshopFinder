@@ -22,7 +22,7 @@ protocol MapViewPresenterProtocol: AnyObject {
     var mapView: MapView? { get set }
 }
 
-class MapViewPresenter: MapViewPresenterProtocol {
+class MapViewPresenter {
     var mapView: MapView?
     private let betshopAPI: BetshopAPI
     private let userLocation: UserLocationHandler
@@ -35,16 +35,6 @@ class MapViewPresenter: MapViewPresenterProtocol {
         self.userLocation = userLocation
     }
 
-    func viewIsLoaded() {
-        userLocation.userLocation = { [weak self] location in
-            guard let initialViewModel = self?.initialViewModel(location: location) else {
-                return
-            }
-            self?.mapView?.update(with: initialViewModel)
-        }
-        userLocation.startUpdating()
-    }
-
     private func initialViewModel(location: CLLocation?) -> MapViewViewModel {
         guard let location = location else {
             return MapViewViewModel.defaultMunichLocation()
@@ -55,6 +45,18 @@ class MapViewPresenter: MapViewPresenterProtocol {
             mapRegion: MKCoordinateRegion(center: location.coordinate, span: MapViewViewModel.defaultSpan),
             selected: nil
         )
+    }
+}
+
+extension MapViewPresenter: MapViewPresenterProtocol {
+    func viewIsLoaded() {
+        userLocation.userLocation = { [weak self] location in
+            guard let initialViewModel = self?.initialViewModel(location: location) else {
+                return
+            }
+            self?.mapView?.update(with: initialViewModel)
+        }
+        userLocation.startUpdating()
     }
 
     func newRegionVisible(region: MKCoordinateRegion, existingAnnotations: [Betshop]) async throws {
@@ -99,7 +101,7 @@ class MapViewPresenter: MapViewPresenterProtocol {
 }
 
 extension Array where Element == BetshopModel {
-    func filterThoseNotIn(existingAnnotations: [Betshop]) -> [BetshopModel] {
+    fileprivate func filterThoseNotIn(existingAnnotations: [Betshop]) -> [BetshopModel] {
         let newAnnotationsIds = Set(self.map(\.id))
         let oldAnnotationsIds = Set(existingAnnotations.map(\.id))
 
@@ -128,7 +130,7 @@ extension MapViewPresenter {
 
 
 extension Betshop {
-    convenience init(model: BetshopModel) {
+    fileprivate convenience init(model: BetshopModel) {
         self.init(
             id: model.id,
             name: model.name,

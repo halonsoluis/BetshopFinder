@@ -9,11 +9,12 @@ import UIKit
 import MapKit
 import BetshopAPI
 
-class MapViewController: UIViewController, MapView {
+class MapViewController: UIViewController {
+    private var lastRequest: UUID?
 
     @IBOutlet var map: MKMapView!
+
     var presenter: MapViewPresenterProtocol?
-    private var lastRequest: UUID?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,21 +26,16 @@ class MapViewController: UIViewController, MapView {
         presenter?.viewIsLoaded()
     }
 
-    func configureMap() {
+    private func configureMap() {
         map.delegate = self
         map.register(BetshopAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
     }
 
-    func update(with model: MapViewViewModel) {
-        updateRegion(region: model.mapRegion)
-        updateAnnotations(annotations: model.annotations, selected: model.selected)
-    }
-
-    func updateRegion(region: MKCoordinateRegion) {
+    private func updateRegion(region: MKCoordinateRegion) {
         map.setRegion(region, animated: false)
     }
 
-    func updateAnnotations(annotations: [Betshop], selected: Betshop?) {
+    private func updateAnnotations(annotations: [Betshop], selected: Betshop?) {
         map.addAnnotations(annotations)
 
         let selectedAnnotations = map.selectedAnnotations.compactMap { $0 as? Betshop }
@@ -64,6 +60,13 @@ class MapViewController: UIViewController, MapView {
         let notClusteredAnnotations = map.annotations.compactMap { $0 as? Betshop }
 
         return annotationsInClusters + notClusteredAnnotations
+    }
+}
+
+extension MapViewController: MapView {
+    func update(with model: MapViewViewModel) {
+        updateRegion(region: model.mapRegion)
+        updateAnnotations(annotations: model.annotations, selected: model.selected)
     }
 }
 

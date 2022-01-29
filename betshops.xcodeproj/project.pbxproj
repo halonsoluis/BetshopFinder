@@ -228,6 +228,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5B0B7C4127A5ABD300BE22CA /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				5B2EC2C327A4B9C300993957 /* Betshop.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		5B0B7C4227A5ABE100BE22CA /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				5B2EC2C527A4BAF100993957 /* MapViewViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		5B0B7C4327A5ABEF00BE22CA /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5B2EC29827A4B20E00993957 /* MapViewController.swift */,
+				5B2EC2CE27A4DA9400993957 /* BetshopAnnotationView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		5B0B7C4427A5AC0300BE22CA /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				5B2EC2C727A4BB0400993957 /* MapViewPresenter.swift */,
+				5B0B7C3D27A5897700BE22CA /* UserLocationHandler.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
 		5B2EC22127A1F07100993957 /* UI */ = {
 			isa = PBXGroup;
 			children = (
@@ -317,10 +351,11 @@
 		5B2EC29327A4B20E00993957 /* BetshopFinder */ = {
 			isa = PBXGroup;
 			children = (
+				5B0B7C4127A5ABD300BE22CA /* Models */,
 				5B2EC2C927A4BECB00993957 /* Utils */,
 				5B2EC29427A4B20E00993957 /* AppDelegate.swift */,
 				5B2EC29627A4B20E00993957 /* SceneDelegate.swift */,
-				5B2EC2C227A4B93700993957 /* UI */,
+				5B2EC2C227A4B93700993957 /* MapView */,
 				5B2EC29A27A4B20E00993957 /* Main.storyboard */,
 				5B2EC29D27A4B21100993957 /* Assets.xcassets */,
 				5B2EC29F27A4B21100993957 /* LaunchScreen.storyboard */,
@@ -347,17 +382,14 @@
 			path = BetshopFinderUITests;
 			sourceTree = "<group>";
 		};
-		5B2EC2C227A4B93700993957 /* UI */ = {
+		5B2EC2C227A4B93700993957 /* MapView */ = {
 			isa = PBXGroup;
 			children = (
-				5B2EC2C327A4B9C300993957 /* Betshop.swift */,
-				5B2EC29827A4B20E00993957 /* MapViewController.swift */,
-				5B2EC2C527A4BAF100993957 /* MapViewViewModel.swift */,
-				5B2EC2C727A4BB0400993957 /* MapViewPresenter.swift */,
-				5B2EC2CE27A4DA9400993957 /* BetshopAnnotationView.swift */,
-				5B0B7C3D27A5897700BE22CA /* UserLocationHandler.swift */,
+				5B0B7C4427A5AC0300BE22CA /* Presenter */,
+				5B0B7C4327A5ABEF00BE22CA /* Views */,
+				5B0B7C4227A5ABE100BE22CA /* ViewModel */,
 			);
-			path = UI;
+			path = MapView;
 			sourceTree = "<group>";
 		};
 		5B2EC2C927A4BECB00993957 /* Utils */ = {
