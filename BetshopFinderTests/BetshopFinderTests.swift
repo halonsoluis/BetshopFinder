@@ -45,12 +45,12 @@ class MapViewControllerTests: XCTestCase {
         return sut
     }
 
-    private func makeSUT() -> MapViewController {
+    private func makeSUT(file: StaticString = #file, line: UInt = #line) -> MapViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         let sut = storyboard.instantiateInitialViewController() as! MapViewController
 
         addTeardownBlock { [weak sut] in
-            XCTAssertNil(sut)
+            XCTAssertNil(sut, file: file, line: line)
         }
 
         return sut

@@ -19,7 +19,7 @@ class MapViewController: UIViewController, MapView {
         super.viewDidLoad()
 
         presenter = MapViewPresenter()
-        presenter?.mapView = self
+        presenter?.mapView = ThreadSafeMapView(mapView: self)
 
         configureMap()
         presenter?.viewIsLoaded()
@@ -31,7 +31,8 @@ class MapViewController: UIViewController, MapView {
     }
 
     func update(with model: MapViewViewModel) {
-        updateViewInTheMainThread(model: model)
+        updateRegion(region: model.mapRegion)
+        updateAnnotations(annotations: model.annotations, selected: model.selected)
     }
 
     func updateRegion(region: MKCoordinateRegion) {
@@ -55,19 +56,6 @@ class MapViewController: UIViewController, MapView {
         if !selectedAnnotations.isEmpty && !selectedAnnotations.contains(selected) {
             map.deselectAnnotation(map.selectedAnnotations.first, animated: true)
         }
-    }
-
-    private func updateViewInTheMainThread(model: MapViewViewModel) {
-        if Thread.isMainThread {
-            updateRegion(region: model.mapRegion)
-            updateAnnotations(annotations: model.annotations, selected: model.selected)
-        } else {
-            DispatchQueue.main.async { [self] in
-                updateRegion(region: model.mapRegion)
-                updateAnnotations(annotations: model.annotations, selected: model.selected)
-            }
-        }
-
     }
 
     private func retrieveAnnotationsFromMap() -> [Betshop] {

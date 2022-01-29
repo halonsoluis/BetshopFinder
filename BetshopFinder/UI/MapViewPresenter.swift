@@ -23,7 +23,7 @@ protocol MapViewPresenterProtocol: AnyObject {
 }
 
 class MapViewPresenter: MapViewPresenterProtocol {
-    weak var mapView: MapView?
+    var mapView: MapView?
     private let betshopAPI: BetshopAPI
     private let userLocation: UserLocationHandler
 

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5B0B7C3E27A5897700BE22CA /* UserLocationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0B7C3D27A5897700BE22CA /* UserLocationHandler.swift */; };
+		5B0B7C4027A5A8DC00BE22CA /* ThreadSafeMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0B7C3F27A5A8DC00BE22CA /* ThreadSafeMapView.swift */; };
 		5B2EC23E27A205B200993957 /* BetshopAPI.docc in Sources */ = {isa = PBXBuildFile; fileRef = 5B2EC23D27A205B200993957 /* BetshopAPI.docc */; };
 		5B2EC24427A205B200993957 /* BetshopAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B2EC23A27A205B200993957 /* BetshopAPI.framework */; };
 		5B2EC24A27A205B200993957 /* BetshopAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B2EC23C27A205B200993957 /* BetshopAPI.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -116,6 +117,7 @@
 
 /* Begin PBXFileReference section */
 		5B0B7C3D27A5897700BE22CA /* UserLocationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocationHandler.swift; sourceTree = "<group>"; };
+		5B0B7C3F27A5A8DC00BE22CA /* ThreadSafeMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadSafeMapView.swift; sourceTree = "<group>"; };
 		5B2EC21D27A1EDD800993957 /* exampleLocations.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = exampleLocations.json; sourceTree = "<group>"; };
 		5B2EC21F27A1EE5200993957 /* DecodedBetshop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodedBetshop.swift; sourceTree = "<group>"; };
 		5B2EC22427A1F1D300993957 /* BetshopModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetshopModel.swift; sourceTree = "<group>"; };
@@ -315,7 +317,7 @@
 		5B2EC29327A4B20E00993957 /* BetshopFinder */ = {
 			isa = PBXGroup;
 			children = (
-				5B2EC2C927A4BECB00993957 /* Extensions */,
+				5B2EC2C927A4BECB00993957 /* Utils */,
 				5B2EC29427A4B20E00993957 /* AppDelegate.swift */,
 				5B2EC29627A4B20E00993957 /* SceneDelegate.swift */,
 				5B2EC2C227A4B93700993957 /* UI */,
@@ -358,11 +360,12 @@
 			path = UI;
 			sourceTree = "<group>";
 		};
-		5B2EC2C927A4BECB00993957 /* Extensions */ = {
+		5B2EC2C927A4BECB00993957 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				5B0B7C3F27A5A8DC00BE22CA /* ThreadSafeMapView.swift */,
 			);
-			path = Extensions;
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		5B566B59279FE88B004BA1B4 = {
@@ -751,6 +754,7 @@
 				5B2EC29927A4B20E00993957 /* MapViewController.swift in Sources */,
 				5B2EC2C427A4B9C300993957 /* Betshop.swift in Sources */,
 				5B2EC29527A4B20E00993957 /* AppDelegate.swift in Sources */,
+				5B0B7C4027A5A8DC00BE22CA /* ThreadSafeMapView.swift in Sources */,
 				5B2EC29727A4B20E00993957 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
