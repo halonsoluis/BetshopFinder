@@ -40,7 +40,7 @@ class MapViewPresenter: MapViewPresenterProtocol {
             guard let initialViewModel = self?.initialViewModel(location: location) else {
                 return
             }
-            self?.updateViewInTheMainThread(model: initialViewModel)
+            self?.mapView?.update(with: initialViewModel)
         }
         userLocation.startUpdating()
     }
@@ -83,7 +83,7 @@ class MapViewPresenter: MapViewPresenterProtocol {
         model.selected = store
 
         viewModel = model
-        updateViewInTheMainThread(model: model)
+        mapView?.update(with: model)
     }
 
     func userRequestedRouting() {
@@ -95,17 +95,6 @@ class MapViewPresenter: MapViewPresenterProtocol {
         let mapItem = MKMapItem(placemark: placemark)
         mapItem.name = store.name
         mapItem.openInMaps(launchOptions: [:])
-    }
-
-    private func updateViewInTheMainThread(model: MapViewViewModel) {
-        if Thread.isMainThread {
-            mapView?.update(with: model)
-        } else {
-            DispatchQueue.main.async { [self] in
-                mapView?.update(with: model)
-            }
-        }
-
     }
 }
 

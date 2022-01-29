@@ -31,12 +31,19 @@ class MapViewController: UIViewController, MapView {
     }
 
     func update(with model: MapViewViewModel) {
-        map.setRegion(model.mapRegion, animated: false)
-        map.addAnnotations(model.annotations)
+        updateViewInTheMainThread(model: model)
+    }
+
+    func updateRegion(region: MKCoordinateRegion) {
+        map.setRegion(region, animated: false)
+    }
+
+    func updateAnnotations(annotations: [Betshop], selected: Betshop?) {
+        map.addAnnotations(annotations)
 
         let selectedAnnotations = map.selectedAnnotations.compactMap { $0 as? Betshop }
 
-        guard let selected = model.selected else {
+        guard let selected = selected else {
             map.deselectAnnotation(map.selectedAnnotations.first, animated: true)
             return
         }
@@ -48,6 +55,19 @@ class MapViewController: UIViewController, MapView {
         if !selectedAnnotations.isEmpty && !selectedAnnotations.contains(selected) {
             map.deselectAnnotation(map.selectedAnnotations.first, animated: true)
         }
+    }
+
+    private func updateViewInTheMainThread(model: MapViewViewModel) {
+        if Thread.isMainThread {
+            updateRegion(region: model.mapRegion)
+            updateAnnotations(annotations: model.annotations, selected: model.selected)
+        } else {
+            DispatchQueue.main.async { [self] in
+                updateRegion(region: model.mapRegion)
+                updateAnnotations(annotations: model.annotations, selected: model.selected)
+            }
+        }
+
     }
 
     private func retrieveAnnotationsFromMap() -> [Betshop] {
