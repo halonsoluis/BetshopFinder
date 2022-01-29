@@ -7,6 +7,7 @@
 
 import UIKit
 import MapKit
+import BetshopAPI
 
 class MapViewController: UIViewController, MapView {
 
@@ -21,6 +22,8 @@ class MapViewController: UIViewController, MapView {
 
     func configureMap() {
         map.delegate = self
+        presenter = MapViewPresenter(betshopAPI: SuperologyBetshopAPI.defaultBetshopAPI())
+        presenter?.mapView = self
     }
 
     func update(with model: MapViewViewModel) {
