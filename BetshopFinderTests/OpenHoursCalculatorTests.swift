@@ -8,22 +8,24 @@
 import XCTest
 
 enum OpenHoursCalculator {
+    private static let openingHour = "08:00"
+    private static let closingHour = "16:00"
 
-    static func storeStatus(now: Date = Date(), workingHours: (opening: String, closing: String)) -> String {
+    static func storeStatus(now: Date = Date()) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm"
 
         let current = dateFormatter.string(from: now)
 
         let currentTime = dateFormatter.date(from: current)!
-        let openingTime = dateFormatter.date(from: workingHours.opening)!
-        let closingTime = dateFormatter.date(from: workingHours.closing)!
+        let openingTime = dateFormatter.date(from: openingHour)!
+        let closingTime = dateFormatter.date(from: closingHour)!
 
         if (currentTime >= openingTime && currentTime < closingTime) {
-            return "Open Now until \(workingHours.closing)"
+            return "Open Now until \(closingHour)"
         }
 
-        return "Opens tomorrow at \(workingHours.opening)"
+        return "Opens tomorrow at \(openingHour)"
     }
 }
 
@@ -37,7 +39,7 @@ class OpenHoursCalculatorTests: XCTestCase {
 
         let now = dateFormatter.date(from: afterWorkingHours)!
 
-        XCTAssertEqual(OpenHoursCalculator.storeStatus(now: now, workingHours: (opening: "08:00", closing: "20:00")), "Open Now until 20:00")
+        XCTAssertEqual(OpenHoursCalculator.storeStatus(now: now), "Open Now until 16:00")
     }
 
     func test_openHours_showOpensTomorrowWhenAfterWorkingHours() throws {
@@ -47,7 +49,7 @@ class OpenHoursCalculatorTests: XCTestCase {
         dateFormatter.dateFormat = "HH:mm"
 
         let now = dateFormatter.date(from: afterWorkingHours)!
-        XCTAssertEqual(OpenHoursCalculator.storeStatus(now: now, workingHours: (opening: "08:00", closing: "20:00")), "Opens tomorrow at 08:00")
+        XCTAssertEqual(OpenHoursCalculator.storeStatus(now: now), "Opens tomorrow at 08:00")
     }
 }
 //
