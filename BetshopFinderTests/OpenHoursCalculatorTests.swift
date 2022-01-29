@@ -19,11 +19,15 @@ enum OpenHoursCalculator {
     static func storeStatus(now: Date = Date()) -> String {
         let current = dateFormatter.string(from: now)
 
-        if (current >= openingHour && current < closingHour) {
-            return "Open Now until \(closingHour)"
+        guard current < closingHour else {
+            return "Opens tomorrow at \(openingHour)"
         }
 
-        return "Opens tomorrow at \(openingHour)"
+        guard current < openingHour else {
+            return "Open Now until \(closingHour)"
+        }
+        //Extra case not considered in the exercise
+        return "Opens today at \(openingHour)"
     }
 }
 
@@ -48,6 +52,16 @@ class OpenHoursCalculatorTests: XCTestCase {
 
         let now = dateFormatter.date(from: afterWorkingHours)!
         XCTAssertEqual(OpenHoursCalculator.storeStatus(now: now), "Opens tomorrow at 08:00")
+    }
+
+    func test_openHours_showOpensTodayWhenBeforeWorkingHours() throws {
+        let afterWorkingHours = "07:00"
+
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+
+        let now = dateFormatter.date(from: afterWorkingHours)!
+        XCTAssertEqual(OpenHoursCalculator.storeStatus(now: now), "Opens today at 08:00")
     }
 }
 //
