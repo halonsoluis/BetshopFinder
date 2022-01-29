@@ -8,18 +8,60 @@
 import XCTest
 
 enum OpenHoursCalculator {
-    static func storeStatus(now: NSDate = NSDate(), workingHours: (opening: String, closing: String)) -> String {
-        return "Open Now until \(workingHours.closing)"
+
+    static func storeStatus(now: Date = Date(), workingHours: (opening: String, closing: String)) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+
+        let current = dateFormatter.string(from: now)
+
+        let currentTime = dateFormatter.date(from: current)!
+        let openingTime = dateFormatter.date(from: workingHours.opening)!
+        let closingTime = dateFormatter.date(from: workingHours.closing)!
+
+        if (currentTime >= openingTime && currentTime < closingTime) {
+            return "Open Now until \(workingHours.closing)"
+        }
+
+        return "Opens tomorrow at \(workingHours.opening)"
     }
 }
 
 class OpenHoursCalculatorTests: XCTestCase {
 
     func test_openHours_showOpenNowWhenInBetweenWorkingHours() throws {
-        XCTAssertEqual(OpenHoursCalculator.storeStatus(workingHours: (opening: "08:00", closing: "20:00")), "Open Now until 20:00")
+        let afterWorkingHours = "09:00"
+
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+
+        let now = dateFormatter.date(from: afterWorkingHours)!
+
+        XCTAssertEqual(OpenHoursCalculator.storeStatus(now: now, workingHours: (opening: "08:00", closing: "20:00")), "Open Now until 20:00")
     }
 
-//    func test_openHours_showOpensTomorrowWhenAfterWorkingHours() throws {
-//        XCTAssertEqual(OpenHoursCalculator.storeStatus(workingHours: (opening: "08:00", closing: "20:00")), "Opens tomorrow at 08:00")
-//    }
+    func test_openHours_showOpensTomorrowWhenAfterWorkingHours() throws {
+        let afterWorkingHours = "21:00"
+
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+
+        let now = dateFormatter.date(from: afterWorkingHours)!
+        XCTAssertEqual(OpenHoursCalculator.storeStatus(now: now, workingHours: (opening: "08:00", closing: "20:00")), "Opens tomorrow at 08:00")
+    }
 }
+//
+//NSDateFormatter *dateFormatter = [NSDateFormatter new];
+//dateFormatter.locale = locate;
+//
+//if ([[NSCalendar currentCalendar] isDateInToday:date]
+//        || [[NSCalendar currentCalendar] isDateInTomorrow:date]
+//        || [[NSCalendar currentCalendar] isDateInYesterday:date]) {
+//    dateFormatter.dateStyle = NSDateFormatterShortStyle;
+//    dateFormatter.timeStyle = NSDateFormatterNoStyle;
+//    dateFormatter.doesRelativeDateFormatting = YES;
+//    return [dateFormatter stringFromDate:date];
+//}
+//
+//[dateFormatter setDateFormat:@"E d MMMM yyyy"];
+//return [dateFormatter stringFromDate:date];
