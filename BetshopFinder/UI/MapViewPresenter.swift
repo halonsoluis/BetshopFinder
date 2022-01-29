@@ -17,6 +17,7 @@ protocol MapViewPresenterProtocol: AnyObject {
     func viewIsLoaded()
     func newRegionVisible(region: MKCoordinateRegion, existingAnnotations: [Betshop]) async throws
     func newSelection(store: Betshop?)
+    func userRequestedRouting()
 
     var mapView: MapView? { get set }
 }
@@ -83,6 +84,17 @@ class MapViewPresenter: MapViewPresenterProtocol {
 
         viewModel = model
         updateViewInTheMainThread(model: model)
+    }
+
+    func userRequestedRouting() {
+        guard let store = viewModel?.selected else {
+            return
+        }
+
+        let placemark = MKPlacemark(coordinate: store.coordinate)
+        let mapItem = MKMapItem(placemark: placemark)
+        mapItem.name = store.name
+        mapItem.openInMaps(launchOptions: [:])
     }
 
     private func updateViewInTheMainThread(model: MapViewViewModel) {
