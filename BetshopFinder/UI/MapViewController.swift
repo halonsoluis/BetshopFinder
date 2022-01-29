@@ -13,57 +13,102 @@ class MapViewController: UIViewController, MapView {
 
     @IBOutlet var map: MKMapView!
     var presenter: MapViewPresenter?
+    private var lastRequest: UUID?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        presenter = MapViewPresenter(betshopAPI: SuperologyBetshopAPI.defaultBetshopAPI())
+        presenter?.mapView = self
 
         configureMap()
     }
 
     func configureMap() {
         map.delegate = self
-        presenter = MapViewPresenter(betshopAPI: SuperologyBetshopAPI.defaultBetshopAPI())
-        presenter?.mapView = self
+        map.register(BetshopAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
     }
 
     func update(with model: MapViewViewModel) {
-        map.setRegion(model.mapRegion, animated: true)
-        setupAnnotationOnScreen(model.annotations, selected: model.selected)
-        if let selected = model.selected {
-            map.selectAnnotation(selected, animated: false)
+        map.setRegion(model.mapRegion, animated: false)
+        map.addAnnotations(model.annotations)
+
+        let selectedAnnotations = map.selectedAnnotations.compactMap { $0 as? Betshop }
+
+        guard let selected = model.selected else {
+            map.deselectAnnotation(map.selectedAnnotations.first, animated: true)
+            return
+        }
+
+        guard !selectedAnnotations.contains(selected) else {
+            return
+        }
+
+        if !selectedAnnotations.isEmpty && !selectedAnnotations.contains(selected) {
+            map.deselectAnnotation(map.selectedAnnotations.first, animated: true)
         }
     }
 
-    func setupAnnotationOnScreen(_ newAnnotations: [Betshop], selected: Betshop?) {
-        for change in newAnnotations.difference(from: map.annotations as! [Betshop]) {
-            switch change {
-            case let .remove(_, oldElement, _):
-                if oldElement != selected {
-                    map.removeAnnotation(oldElement)
-                }
-            case let .insert(_, newElement, _):
-                map.addAnnotation(newElement)
-            }
-        }
+    private func retrieveAnnotationsFromMap() -> [Betshop] {
+        let clusters = map.annotations.compactMap { $0 as? MKClusterAnnotation }
+        let annotationsInClusters = clusters.map(\.memberAnnotations).joined().compactMap { $0 as? Betshop }
+        let notClusteredAnnotations = map.annotations.compactMap { $0 as? Betshop }
+
+        return annotationsInClusters + notClusteredAnnotations
     }
 }
 
 extension MapViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        return nil
+        if let annotation = annotation as? Betshop  {
+            return mapView.dequeueReusableAnnotationView(withIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier, for: annotation)
+        }
+
+        return mapView.dequeueReusableAnnotationView(withIdentifier: MKMapViewDefaultClusterAnnotationViewReuseIdentifier, for: annotation)
+    }
+
+    func mapView(_ mapView: MKMapView, clusterAnnotationForMemberAnnotations memberAnnotations: [MKAnnotation]) -> MKClusterAnnotation {
+        let cluster = MKClusterAnnotation(memberAnnotations: memberAnnotations)
+
+        if memberAnnotations.count > 10 {
+            cluster.title = (memberAnnotations.first as? Betshop)?.topLevelAddress
+        } else {
+            cluster.title = (memberAnnotations.first as? Betshop)?.address
+        }
+
+        return cluster
     }
 
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
-        Task {
-            try await presenter?.newRegionVisible(region: mapView.region)
+        let lastRequest = UUID()
+        self.lastRequest = lastRequest
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+            guard lastRequest == self.lastRequest else { return }
+
+            Task {
+                try await self.presenter?.newRegionVisible(
+                    region: mapView.region,
+                    existingAnnotations: self.retrieveAnnotationsFromMap()
+                )
+            }
         }
     }
 
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-
+        guard let view = view as? BetshopAnnotationView, let betshop = view.annotation as? Betshop else {
+            return
+        }
+        view.image = UIImage(named: BetshopAnnotationView.imageSelected)
+        presenter?.newSelection(store: betshop)
+        map.showAnnotations([betshop], animated: true)
     }
 
     func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
+        guard let view = view as? BetshopAnnotationView else {
+            return
+        }
 
+        view.image = UIImage(named: BetshopAnnotationView.imageNotSelected)
+        presenter?.newSelection(store: nil)
     }
 }

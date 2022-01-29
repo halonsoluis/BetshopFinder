@@ -8,7 +8,7 @@
 import Foundation
 import MapKit
 
-class MapViewViewModel {
+struct MapViewViewModel {
 
     var annotations: [Betshop] = []
     var mapRegion = MKCoordinateRegion()
@@ -27,7 +27,7 @@ extension MapViewViewModel {
     )
 
     static func defaultMunichLocation() -> MapViewViewModel {
-        let map = MapViewViewModel()
+        var map = MapViewViewModel()
         map.mapRegion = MKCoordinateRegion(
             center: munich,
             span: defaultSpan

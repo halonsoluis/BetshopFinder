@@ -24,23 +24,36 @@ class MapViewPresenter {
         self.betshopAPI = betshopAPI
     }
 
-    func newRegionVisible(region: MKCoordinateRegion) async throws {
+    func newRegionVisible(region: MKCoordinateRegion, existingAnnotations: [Betshop]) async throws {
 
         let boundingBox = self.boundingBox(for: region)
 
-        let betshopsFromAPI = try await betshopAPI.stores(in: boundingBox)
+        let newBetshopsFromAPI = try await betshopAPI
+            .stores(in: boundingBox)
+            .filterThoseNotIn(existingAnnotations: existingAnnotations)
+            .map(Betshop.init)
 
-        let model = MapViewViewModel()
-        model.annotations = betshopsFromAPI.map(Betshop.init)
-        model.mapRegion = region
-        model.selected = viewModel?.selected
+
+        let model = MapViewViewModel(
+            annotations: newBetshopsFromAPI,
+            mapRegion: region,
+            selected: viewModel?.selected
+        )
 
         viewModel = model
 
         updateViewInTheMainThread(model: model)
     }
 
-    func updateViewInTheMainThread(model: MapViewViewModel) {
+    func newSelection(store: Betshop?) {
+        var model = viewModel!
+        model.selected = store
+
+        viewModel = model
+        updateViewInTheMainThread(model: model)
+    }
+
+    private func updateViewInTheMainThread(model: MapViewViewModel) {
         if Thread.isMainThread {
             mapView?.update(with: model)
         } else {
@@ -49,6 +62,18 @@ class MapViewPresenter {
             }
         }
 
+    }
+}
+
+extension Array where Element == BetshopModel {
+    func filterThoseNotIn(existingAnnotations: [Betshop]) -> [BetshopModel] {
+        let newAnnotationsIds = Set(self.map(\.id))
+        let oldAnnotationsIds = Set(existingAnnotations.map(\.id))
+
+        let alreadyInMap = newAnnotationsIds.intersection(oldAnnotationsIds)
+        let newlyArrived = newAnnotationsIds.subtracting(alreadyInMap)
+
+        return self.filter { newlyArrived.contains($0.id) }
     }
 }
 
@@ -80,3 +105,5 @@ extension Betshop {
         )
     }
 }
+
+extension BetshopModel: Identifiable {}
