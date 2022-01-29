@@ -28,6 +28,7 @@ class MapViewControllerTests: XCTestCase {
         let sut = makeAndPrepareSUT()
         let munichCenter = MapViewViewModel.defaultMunichLocation().mapRegion.center
 
+        sut.map.delegate = nil
         sut.update(with: MapViewViewModel.defaultMunichLocation())
 
         XCTAssertEqual(sut.map.region.center.latitude, munichCenter.latitude, accuracy: 0.0000001)
