@@ -8,6 +8,7 @@
 import XCTest
 import BetshopAPI
 @testable import BetshopFinder
+import CoreLocation
 
 class MapViewPresenterTests: XCTestCase {
 
@@ -17,18 +18,66 @@ class MapViewPresenterTests: XCTestCase {
         let sut = MapViewPresenter(betshopAPI: api)
         sut.mapView = view
 
-//        let testModel = BetshopModel(
-//            id: 2312
-//            name: "name"
-//            address: "address"
-//            topLevelAddress: "topLevelAddress"
-//            location: (lat: 123.0, lng: 123.0)
-//        )
-//        api.storesReturnedModels = [testModel]
-        try await sut.newRegionVisible(region: MapViewViewModel.defaultMunichLocation().mapRegion)
+        try await sut.newRegionVisible(
+            region: MapViewViewModel.defaultMunichLocation().mapRegion,
+            existingAnnotations: []
+        )
 
         XCTAssertEqual(api.storesDidCalledWithArea.count, 1)
-//        XCTAssertEqual(view.updateCalledWithModel.count, 1)
+    }
+
+    func test_newRegionSelection_DoesNotTriggersAnnotationRequestForExistingOnes() async throws {
+        let api = BetshopAPISpy()
+        let view = MapViewSpy()
+        let sut = MapViewPresenter(betshopAPI: api)
+        sut.mapView = view
+
+        api.storesReturnedModels = [BetshopModel(
+            id: 2312,
+            name: "name",
+            address: "address",
+            topLevelAddress: "topLevelAddress",
+            location: (lat: 123.0, lng: 123.0)
+        )]
+
+        try await sut.newRegionVisible(
+            region: MapViewViewModel.defaultMunichLocation().mapRegion,
+            existingAnnotations: [
+                Betshop(
+                    id: 2312,
+                    name: "String",
+                    address: "",
+                    topLevelAddress: "",
+                    coordinate: CLLocationCoordinate2DMake(123, 123)
+                )
+            ]
+        )
+
+        XCTAssertEqual(view.updateCalledWithModel.count, 1)
+        XCTAssertEqual(view.updateCalledWithModel.first?.annotations, [])
+    }
+
+    func test_newRegionSelection_triggersAnnotationRequestForNewOnes() async throws {
+        let api = BetshopAPISpy()
+        let view = MapViewSpy()
+        let sut = MapViewPresenter(betshopAPI: api)
+        sut.mapView = view
+
+        api.storesReturnedModels = [BetshopModel(
+            id: 2312,
+            name: "name",
+            address: "address",
+            topLevelAddress: "topLevelAddress",
+            location: (lat: 123.0, lng: 123.0)
+        )]
+
+        try await sut.newRegionVisible(
+            region: MapViewViewModel.defaultMunichLocation().mapRegion,
+            existingAnnotations: []
+        )
+
+        XCTAssertEqual(view.updateCalledWithModel.count, 1)
+        XCTAssertEqual(view.updateCalledWithModel.first?.annotations.map(\.id), [2312])
     }
 
 }

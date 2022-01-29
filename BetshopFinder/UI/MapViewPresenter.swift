@@ -42,7 +42,7 @@ class MapViewPresenter {
 
         viewModel = model
 
-        updateViewInTheMainThread(model: model)
+        mapView?.update(with: model)
     }
 
     func newSelection(store: Betshop?) {
