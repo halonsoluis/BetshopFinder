@@ -31,37 +31,33 @@ enum OpenHoursCalculator {
     }
 }
 
-class OpenHoursCalculatorTests: XCTestCase {
+final class OpenHoursCalculatorTests: XCTestCase {
 
     func test_openHours_showOpenNowWhenInBetweenWorkingHours() throws {
-        let afterWorkingHours = "09:00"
-
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "HH:mm"
-
-        let now = dateFormatter.date(from: afterWorkingHours)!
+        let now = dateFortime(hour: "09:00")
 
         XCTAssertEqual(OpenHoursCalculator.storeStatus(now: now), "Open Now until 16:00")
     }
 
     func test_openHours_showOpensTomorrowWhenAfterWorkingHours() throws {
-        let afterWorkingHours = "21:00"
+        let now = dateFortime(hour: "21:00")
 
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "HH:mm"
-
-        let now = dateFormatter.date(from: afterWorkingHours)!
         XCTAssertEqual(OpenHoursCalculator.storeStatus(now: now), "Opens tomorrow at 08:00")
     }
 
     func test_openHours_showOpensTodayWhenBeforeWorkingHours() throws {
-        let afterWorkingHours = "07:00"
+        let now = dateFortime(hour: "07:00")
+
+        XCTAssertEqual(OpenHoursCalculator.storeStatus(now: now), "Opens today at 08:00")
+    }
+
+    private func dateFortime(hour: String) -> Date {
+        let afterWorkingHours = hour
 
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm"
 
-        let now = dateFormatter.date(from: afterWorkingHours)!
-        XCTAssertEqual(OpenHoursCalculator.storeStatus(now: now), "Opens today at 08:00")
+        return dateFormatter.date(from: afterWorkingHours)!
     }
 }
 //
