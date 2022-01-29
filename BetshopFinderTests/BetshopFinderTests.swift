@@ -21,7 +21,7 @@ class MapViewControllerTests: XCTestCase {
     func test_whenViewIsLoaded_delegateIsSetToController() throws {
         let sut = makeAndPrepareSUT()
 
-        XCTAssertIdentical(sut.map.delegate, sut)
+        XCTAssertIdentical(sut.map.delegate, sut.mapHandler)
     }
 
     func test_update_appliesRegionInModelToTheMap() throws {

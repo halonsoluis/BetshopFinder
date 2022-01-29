@@ -15,8 +15,6 @@ protocol MapView: AnyObject {
 
 protocol MapViewPresenterProtocol: AnyObject {
     func viewIsLoaded()
-    func newRegionVisible(region: MKCoordinateRegion, existingAnnotations: [Betshop]) async throws
-    func newSelection(store: Betshop?)
     func userRequestedRouting()
 
     var mapView: MapView? { get set }
@@ -59,6 +57,16 @@ extension MapViewPresenter: MapViewPresenterProtocol {
         userLocation.startUpdating()
     }
 
+    func userRequestedRouting() {
+        guard let store = viewModel?.selected else {
+            return
+        }
+
+        OpenInMapsApp.navigate(to: store)
+    }
+}
+
+extension MapViewPresenter: MapHandlerDelegate {
     func newRegionVisible(region: MKCoordinateRegion, existingAnnotations: [Betshop]) async throws {
 
         let boundingBox = self.boundingBox(for: region)
@@ -86,14 +94,6 @@ extension MapViewPresenter: MapViewPresenterProtocol {
 
         viewModel = model
         mapView?.update(with: model)
-    }
-
-    func userRequestedRouting() {
-        guard let store = viewModel?.selected else {
-            return
-        }
-
-        OpenInMapsApp.navigate(to: store)
     }
 }
 
