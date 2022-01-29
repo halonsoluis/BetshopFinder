@@ -10,18 +10,16 @@ import XCTest
 enum OpenHoursCalculator {
     private static let openingHour = "08:00"
     private static let closingHour = "16:00"
-
-    static func storeStatus(now: Date = Date()) -> String {
+    private static let dateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm"
+        return dateFormatter
+    }()
 
+    static func storeStatus(now: Date = Date()) -> String {
         let current = dateFormatter.string(from: now)
 
-        let currentTime = dateFormatter.date(from: current)!
-        let openingTime = dateFormatter.date(from: openingHour)!
-        let closingTime = dateFormatter.date(from: closingHour)!
-
-        if (currentTime >= openingTime && currentTime < closingTime) {
+        if (current >= openingHour && current < closingHour) {
             return "Open Now until \(closingHour)"
         }
 
