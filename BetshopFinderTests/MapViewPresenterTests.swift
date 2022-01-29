@@ -29,7 +29,9 @@ class MapViewPresenterTests: XCTestCase {
     func test_newRegionSelection_DoesNotTriggersAnnotationRequestForExistingOnes() async throws {
         let api = BetshopAPISpy()
         let view = MapViewSpy()
-        let sut = MapViewPresenter(betshopAPI: api)
+        let userLocation = UserLocationHandlerDummy()
+
+        let sut = MapViewPresenter(betshopAPI: api, userLocation: userLocation)
         sut.mapView = view
 
         api.storesReturnedModels = [BetshopModel(
@@ -60,7 +62,9 @@ class MapViewPresenterTests: XCTestCase {
     func test_newRegionSelection_triggersAnnotationRequestForNewOnes() async throws {
         let api = BetshopAPISpy()
         let view = MapViewSpy()
-        let sut = MapViewPresenter(betshopAPI: api)
+        let userLocation = UserLocationHandlerDummy()
+
+        let sut = MapViewPresenter(betshopAPI: api, userLocation: userLocation)
         sut.mapView = view
 
         api.storesReturnedModels = [BetshopModel(
@@ -80,6 +84,12 @@ class MapViewPresenterTests: XCTestCase {
         XCTAssertEqual(view.updateCalledWithModel.first?.annotations.map(\.id), [2312])
     }
 
+}
+
+class UserLocationHandlerDummy: UserLocationHandler {
+    override func startUpdating() {
+        userLocation?(nil)
+    }
 }
 
 class MapViewSpy: MapView {

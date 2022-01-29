@@ -31,14 +31,6 @@ class MapViewModel: ObservableObject {
         longitudeDelta: 0.01
     )
 
-    init() {
-        annotations = []
-        mapRegion = MKCoordinateRegion(
-            center: munich,
-            span: defaultSpan
-        )
-    }
-
     func regionHasChanged() {
         let mapRegion = self.mapRegion
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {

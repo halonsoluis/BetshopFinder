@@ -12,16 +12,17 @@ import BetshopAPI
 class MapViewController: UIViewController, MapView {
 
     @IBOutlet var map: MKMapView!
-    var presenter: MapViewPresenter?
+    var presenter: MapViewPresenterProtocol?
     private var lastRequest: UUID?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        presenter = MapViewPresenter(betshopAPI: SuperologyBetshopAPI.defaultBetshopAPI())
+        presenter = MapViewPresenter()
         presenter?.mapView = self
 
         configureMap()
+        presenter?.viewIsLoaded()
     }
 
     func configureMap() {
@@ -60,11 +61,15 @@ class MapViewController: UIViewController, MapView {
 
 extension MapViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        if let annotation = annotation as? Betshop  {
+        guard !(annotation is MKClusterAnnotation) else {
+            return mapView.dequeueReusableAnnotationView(withIdentifier: MKMapViewDefaultClusterAnnotationViewReuseIdentifier, for: annotation)
+        }
+
+        guard !(annotation is Betshop) else {
             return mapView.dequeueReusableAnnotationView(withIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier, for: annotation)
         }
 
-        return mapView.dequeueReusableAnnotationView(withIdentifier: MKMapViewDefaultClusterAnnotationViewReuseIdentifier, for: annotation)
+        return nil
     }
 
     func mapView(_ mapView: MKMapView, clusterAnnotationForMemberAnnotations memberAnnotations: [MKAnnotation]) -> MKClusterAnnotation {

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B0B7C3E27A5897700BE22CA /* UserLocationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0B7C3D27A5897700BE22CA /* UserLocationHandler.swift */; };
 		5B2EC23E27A205B200993957 /* BetshopAPI.docc in Sources */ = {isa = PBXBuildFile; fileRef = 5B2EC23D27A205B200993957 /* BetshopAPI.docc */; };
 		5B2EC24427A205B200993957 /* BetshopAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B2EC23A27A205B200993957 /* BetshopAPI.framework */; };
 		5B2EC24A27A205B200993957 /* BetshopAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B2EC23C27A205B200993957 /* BetshopAPI.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -114,6 +115,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5B0B7C3D27A5897700BE22CA /* UserLocationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocationHandler.swift; sourceTree = "<group>"; };
 		5B2EC21D27A1EDD800993957 /* exampleLocations.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = exampleLocations.json; sourceTree = "<group>"; };
 		5B2EC21F27A1EE5200993957 /* DecodedBetshop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodedBetshop.swift; sourceTree = "<group>"; };
 		5B2EC22427A1F1D300993957 /* BetshopModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetshopModel.swift; sourceTree = "<group>"; };
@@ -351,6 +353,7 @@
 				5B2EC2C527A4BAF100993957 /* MapViewViewModel.swift */,
 				5B2EC2C727A4BB0400993957 /* MapViewPresenter.swift */,
 				5B2EC2CE27A4DA9400993957 /* BetshopAnnotationView.swift */,
+				5B0B7C3D27A5897700BE22CA /* UserLocationHandler.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -743,6 +746,7 @@
 			files = (
 				5B2EC2CF27A4DA9400993957 /* BetshopAnnotationView.swift in Sources */,
 				5B2EC2C827A4BB0400993957 /* MapViewPresenter.swift in Sources */,
+				5B0B7C3E27A5897700BE22CA /* UserLocationHandler.swift in Sources */,
 				5B2EC2C627A4BAF100993957 /* MapViewViewModel.swift in Sources */,
 				5B2EC29927A4B20E00993957 /* MapViewController.swift in Sources */,
 				5B2EC2C427A4B9C300993957 /* Betshop.swift in Sources */,

@@ -14,14 +14,47 @@ protocol MapView: AnyObject {
     func update(with model: MapViewViewModel)
 }
 
-class MapViewPresenter {
+protocol MapViewPresenterProtocol: AnyObject {
+    func viewIsLoaded()
+    func newRegionVisible(region: MKCoordinateRegion, existingAnnotations: [Betshop]) async throws
+    func newSelection(store: Betshop?)
+
+    var mapView: MapView? { get set }
+}
+
+class MapViewPresenter: MapViewPresenterProtocol {
     weak var mapView: MapView?
     private let betshopAPI: BetshopAPI
+    private let userLocation: UserLocationHandler
 
     var viewModel: MapViewViewModel?
 
-    init(betshopAPI: BetshopAPI) {
+    init(betshopAPI: BetshopAPI = SuperologyBetshopAPI.defaultBetshopAPI(),
+         userLocation: UserLocationHandler = UserLocationHandler()) {
         self.betshopAPI = betshopAPI
+        self.userLocation = userLocation
+    }
+
+    func viewIsLoaded() {
+        userLocation.userLocation = { [weak self] location in
+            guard let initialViewModel = self?.initialViewModel(location: location) else {
+                return
+            }
+            self?.updateViewInTheMainThread(model: initialViewModel)
+        }
+        userLocation.startUpdating()
+    }
+
+    private func initialViewModel(location: CLLocation?) -> MapViewViewModel {
+        guard let location = location else {
+            return MapViewViewModel.defaultMunichLocation()
+        }
+
+        return MapViewViewModel(
+            annotations: [],
+            mapRegion: MKCoordinateRegion(center: location.coordinate, span: MapViewViewModel.defaultSpan),
+            selected: nil
+        )
     }
 
     func newRegionVisible(region: MKCoordinateRegion, existingAnnotations: [Betshop]) async throws {

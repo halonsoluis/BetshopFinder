@@ -17,11 +17,11 @@ struct MapViewViewModel {
 
 extension MapViewViewModel {
 
-    private static let munich = CLLocationCoordinate2D(
+    static let munich = CLLocationCoordinate2D(
         latitude: 48.137154,
         longitude: 11.576124
     )
-    private static let defaultSpan = MKCoordinateSpan(
+    static let defaultSpan = MKCoordinateSpan(
         latitudeDelta: 0.01,
         longitudeDelta: 0.01
     )
