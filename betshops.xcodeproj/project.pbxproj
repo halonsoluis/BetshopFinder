@@ -288,6 +288,7 @@
 		5B2EC29327A4B20E00993957 /* BetshopFinder */ = {
 			isa = PBXGroup;
 			children = (
+				5B2EC2C927A4BECB00993957 /* Extensions */,
 				5B2EC29427A4B20E00993957 /* AppDelegate.swift */,
 				5B2EC29627A4B20E00993957 /* SceneDelegate.swift */,
 				5B2EC2C227A4B93700993957 /* UI */,
@@ -325,6 +326,13 @@
 				5B2EC2C727A4BB0400993957 /* MapViewPresenter.swift */,
 			);
 			path = UI;
+			sourceTree = "<group>";
+		};
+		5B2EC2C927A4BECB00993957 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		5B566B59279FE88B004BA1B4 = {

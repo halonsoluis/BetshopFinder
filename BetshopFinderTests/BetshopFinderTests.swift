@@ -10,19 +10,29 @@ import XCTest
 
 class MapViewControllerTests: XCTestCase {
 
-   func test_whenViewIsLoaded_mapIsLinked() throws {
-       let sut = makeSUT()
+    func test_whenViewIsLoaded_mapIsLinked() throws {
+        let sut = makeSUT()
 
-       sut.loadViewIfNeeded()
+        sut.loadViewIfNeeded()
 
-       XCTAssertNotNil(sut.map)
+        XCTAssertNotNil(sut.map)
     }
 
     func test_whenViewIsLoaded_delegateIsSetToController() throws {
         let sut = makeAndPrepareSUT()
 
         XCTAssertIdentical(sut.map.delegate, sut)
-     }
+    }
+
+    func test_update_appliesRegionInModelToTheMap() throws {
+        let sut = makeAndPrepareSUT()
+        let munichCenter = MapViewViewModel.defaultMunichLocation().mapRegion.center
+
+        sut.update(with: MapViewViewModel.defaultMunichLocation())
+
+        XCTAssertEqual(sut.map.region.center.latitude, munichCenter.latitude, accuracy: 0.0000001)
+        XCTAssertEqual(sut.map.region.center.longitude, munichCenter.longitude, accuracy: 0.0000001)
+    }
 
     //MARK: - HELPER METHODS
 

@@ -21,6 +21,10 @@ class MapViewController: UIViewController {
     func configureMap() {
         map.delegate = self
     }
+
+    func update(with model: MapViewViewModel) {
+        map.setRegion(model.mapRegion, animated: false)
+    }
 }
 
 extension MapViewController: MKMapViewDelegate {
