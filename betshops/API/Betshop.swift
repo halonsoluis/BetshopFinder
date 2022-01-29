@@ -37,4 +37,8 @@ extension Betshop {
     var openStatus: String {
         return OpenHoursCalculator.storeStatus()
     }
+
+    func navigate() {
+        OpenInMapsApp.navigate(to: self)
+    }
 }

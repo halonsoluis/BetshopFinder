@@ -44,17 +44,11 @@ struct BetshopStoreDetailsView: View {
                                 Label("Route", systemImage: "location.magnifyingglass")
                                     .labelStyle(.titleAndIcon)
                                     .foregroundColor(.blue)
-                                    .onTapGesture(perform: navigate)
+                                    .onTapGesture(perform: betshop.navigate)
 
                             }
 
                         }
-
-                        Spacer()
-
-                        //Using image as Button does not look right in BigSur
-                        Image("close")
-                            .onTapGesture(perform: close)
                     }
                 }
                 .padding()
@@ -68,17 +62,6 @@ struct BetshopStoreDetailsView: View {
         }
     }
 }
-
-extension BetshopStoreDetailsView {
-    func navigate() {
-
-    }
-
-    func close() {
-        
-    }
-}
-
 
 struct BetshopStoreDetailsView_Previews: PreviewProvider {
     static var previews: some View {

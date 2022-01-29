@@ -93,10 +93,7 @@ extension MapViewPresenter: MapViewPresenterProtocol {
             return
         }
 
-        let placemark = MKPlacemark(coordinate: store.coordinate)
-        let mapItem = MKMapItem(placemark: placemark)
-        mapItem.name = store.name
-        mapItem.openInMaps(launchOptions: [:])
+        OpenInMapsApp.navigate(to: store)
     }
 }
 
