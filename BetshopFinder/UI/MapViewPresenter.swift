@@ -8,7 +8,6 @@
 import Foundation
 import MapKit
 import BetshopAPI
-import SwiftUI
 
 protocol MapView: AnyObject {
     func update(with model: MapViewViewModel)
