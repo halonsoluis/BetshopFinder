@@ -70,11 +70,10 @@ struct MapView2: UIViewRepresentable {
         MapView2.Coordinator(self)
     }
 
-
     func makeUIView(context: Context) -> MKMapView {
-        ///  creating a map
+        //  creating a map
         let view = MKMapView()
-        /// connecting delegate with the map
+        // connecting delegate with the map
         view.delegate = context.coordinator
         view.setRegion(viewModel.mapRegion, animated: false)
         view.mapType = .standard

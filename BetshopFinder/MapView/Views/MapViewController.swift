@@ -14,7 +14,6 @@ class MapViewController: UIViewController {
 
     var presenter: MapViewPresenterProtocol?
     var mapHandler: MapHandler?
-    var detailView: UIViewController?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,40 +58,42 @@ class MapViewController: UIViewController {
     }
 
     func deselectAnnotation() {
+        removeDetailViewIfNeeded()
         map.deselectAnnotation(map.selectedAnnotations.first, animated: true)
+    }
 
-        guard let detailView = detailView else {
+    func removeDetailViewIfNeeded() {
+        guard let detailView = view.viewWithTag(Self.infoViewTag) else {
             return
         }
-        detailView.dismiss(animated: true) {
-            detailView.removeFromParent()
-            detailView.view.removeFromSuperview()
-            self.detailView = nil
-        }
+        detailView.removeFromSuperview()
+    }
 
+    func createDetailView(for store: Betshop) -> UIView {
+        let detailView = DetailView()
+            .makeUI(store)
+        detailView.view.backgroundColor = .clear
+
+        return detailView.view
+    }
+
+    private static let infoViewTag = 1234567890
+    func attachViewAtTheBottom(_ bottomView: UIView) {
+        view.addSubview(bottomView)
+
+        bottomView.tag = Self.infoViewTag
+        bottomView.translatesAutoresizingMaskIntoConstraints = false
+
+        bottomView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 8).isActive = true
+        bottomView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
+        bottomView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive =  true
     }
 
     func presentDetails(store: Betshop) {
-        guard detailView == nil else {
-            return
-        }
-
-        let detailView = DetailView().makeUI(store)
-        detailView.view.backgroundColor = .clear
-        addChild(detailView)
-        view.addSubview(detailView.view)
-
-        self.detailView = detailView
-
-        guard let infoView = detailView.view else {
-            return
-        }
-        infoView.translatesAutoresizingMaskIntoConstraints = false
-
-        infoView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 8).isActive = true
-        infoView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
-        infoView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive =  true
-
+        removeDetailViewIfNeeded()
+        attachViewAtTheBottom(
+            createDetailView(for: store)
+        )
     }
 }
 
