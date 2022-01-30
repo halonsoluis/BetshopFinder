@@ -36,8 +36,9 @@ struct BetshopStoreDetailsView: View {
 
                             HStack {
                                 Text(betshop.openStatus)
-                                    .font(.callout)
-                                    .foregroundColor(.green)
+                                    .font(.subheadline)
+                                    .fontWeight(.bold)
+                                    .foregroundColor(.accentColor)
 
                                 Spacer()
 
