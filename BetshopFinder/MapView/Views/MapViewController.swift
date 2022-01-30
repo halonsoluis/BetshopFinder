@@ -58,14 +58,20 @@ class MapViewController: UIViewController {
     }
 
     func presentDetails(store: Betshop) {
-        let view = DetailView().makeUI(store)
+        let detailView = DetailView().makeUI(store)
+        detailView.view.backgroundColor = .clear
+        addChild(detailView)
+        view.addSubview(detailView.view)
 
-        self.definesPresentationContext = true
-        self.modalPresentationStyle = .pageSheet
+        guard let infoView = detailView.view else {
+            return
+        }
+        infoView.translatesAutoresizingMaskIntoConstraints = false
 
-        view.view.backgroundColor = .clear
+        infoView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 8).isActive = true
+        infoView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
+        infoView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive =  true
 
-        present(view, animated: true, completion: nil)
     }
 }
 
