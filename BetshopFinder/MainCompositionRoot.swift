@@ -27,10 +27,13 @@ final class MainCompositionRoot {
         let presenter = MapViewPresenter(
             betshopAPI: SuperologyBetshopAPI.defaultBetshopAPI(),
             userLocation: UserLocationHandler(),
-            router: router
+            router: router,
+            mapView: ThreadSafeMapView(mapView: mapView)
         )
-        presenter.mapView = ThreadSafeMapView(mapView: mapView)
-        mapView.mapHandler = MapHandler(delegate: presenter)
+        let mapHandler = MapHandler(delegate: presenter)
+
+        mapView.mapHandler = mapHandler
+        mapView.presenter = presenter
 
         return mapView
     }

@@ -18,9 +18,9 @@ class MapViewPresenterTests: XCTestCase {
         let sut = MapViewPresenter(
             betshopAPI: api,
             userLocation: UserLocationHandler(),
-            router: Router(mainViewResolver: { nil })
+            router: Router(mainViewResolver: { nil }),
+            mapView: view
         )
-        sut.mapView = view
 
         try await sut.newRegionVisible(
             region: MapViewViewModel.defaultMunichLocation().mapRegion,
@@ -38,9 +38,9 @@ class MapViewPresenterTests: XCTestCase {
         let sut = MapViewPresenter(
             betshopAPI: api,
             userLocation: userLocation,
-            router: Router(mainViewResolver: { nil })
+            router: Router(mainViewResolver: { nil }),
+            mapView: view
         )
-        sut.mapView = view
 
         api.storesReturnedModels = [BetshopModel(
             id: 2312,
@@ -75,9 +75,9 @@ class MapViewPresenterTests: XCTestCase {
         let sut = MapViewPresenter(
             betshopAPI: api,
             userLocation: userLocation,
-            router: Router(mainViewResolver: { nil })
+            router: Router(mainViewResolver: { nil }),
+            mapView: view
         )
-        sut.mapView = view
 
         api.storesReturnedModels = [BetshopModel(
             id: 2312,

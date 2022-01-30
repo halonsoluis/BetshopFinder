@@ -15,22 +15,21 @@ protocol MapView: AnyObject {
 protocol MapViewPresenterProtocol: AnyObject {
     func viewIsLoaded()
     func userRequestedRouting()
-
-    var mapView: MapView? { get set }
 }
 
 class MapViewPresenter {
-    var mapView: MapView?
     private let betshopAPI: BetshopAPI
     private let userLocation: UserLocationHandler
     private let router: MainRooter
+    private let mapView: MapView
 
     var viewModel: MapViewViewModel?
 
-    init(betshopAPI: BetshopAPI, userLocation: UserLocationHandler, router: MainRooter) {
+    init(betshopAPI: BetshopAPI, userLocation: UserLocationHandler, router: MainRooter, mapView: MapView) {
         self.betshopAPI = betshopAPI
         self.userLocation = userLocation
         self.router = router
+        self.mapView = mapView
     }
 
     private func initialViewModel(location: CLLocation?) -> MapViewViewModel {
@@ -52,7 +51,7 @@ extension MapViewPresenter: MapViewPresenterProtocol {
             guard let initialViewModel = self?.initialViewModel(location: location) else {
                 return
             }
-            self?.mapView?.update(with: initialViewModel)
+            self?.mapView.update(with: initialViewModel)
         }
         userLocation.startUpdating()
     }
@@ -85,7 +84,7 @@ extension MapViewPresenter: MapHandlerDelegate {
 
         viewModel = model
 
-        mapView?.update(with: model)
+        mapView.update(with: model)
     }
 
     func newSelection(store: Betshop?) {
@@ -93,7 +92,7 @@ extension MapViewPresenter: MapHandlerDelegate {
         model.selected = store
 
         viewModel = model
-        mapView?.update(with: model)
+        mapView.update(with: model)
 
         router.presentDetails(store: store)
     }
