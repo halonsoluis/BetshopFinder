@@ -14,6 +14,7 @@ class MapViewController: UIViewController {
 
     var presenter: MapViewPresenterProtocol?
     var mapHandler: MapHandler?
+    var detailView: UIViewController?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,7 +43,7 @@ class MapViewController: UIViewController {
         let selectedAnnotations = map.selectedAnnotations.compactMap { $0 as? Betshop }
 
         guard let selected = selected else {
-            map.deselectAnnotation(map.selectedAnnotations.first, animated: true)
+            deselectAnnotation()
             return
         }
 
@@ -53,15 +54,35 @@ class MapViewController: UIViewController {
         }
 
         if !selectedAnnotations.isEmpty && !selectedAnnotations.contains(selected) {
-            map.deselectAnnotation(map.selectedAnnotations.first, animated: true)
+            deselectAnnotation()
         }
     }
 
+    func deselectAnnotation() {
+        map.deselectAnnotation(map.selectedAnnotations.first, animated: true)
+
+        guard let detailView = detailView else {
+            return
+        }
+        detailView.dismiss(animated: true) {
+            detailView.removeFromParent()
+            detailView.view.removeFromSuperview()
+            self.detailView = nil
+        }
+
+    }
+
     func presentDetails(store: Betshop) {
+        guard detailView == nil else {
+            return
+        }
+
         let detailView = DetailView().makeUI(store)
         detailView.view.backgroundColor = .clear
         addChild(detailView)
         view.addSubview(detailView.view)
+
+        self.detailView = detailView
 
         guard let infoView = detailView.view else {
             return
