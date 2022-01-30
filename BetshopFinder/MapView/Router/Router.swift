@@ -8,7 +8,7 @@
 import UIKit
 
 class Router: MainRooter {
-    private static let infoViewTag = 1234567890
+    private weak var detailView: UIView?
     private var mainView: () -> UIView?
 
     init(mainViewResolver: @escaping () -> UIView?) {
@@ -16,10 +16,7 @@ class Router: MainRooter {
     }
 
     private func removeDetailViewIfNeeded() {
-        guard let detailView = mainView()?.viewWithTag(Self.infoViewTag) else {
-            return
-        }
-        detailView.removeFromSuperview()
+        detailView?.removeFromSuperview()
     }
 
     private func createDetails(for store: Betshop) -> UIView {
@@ -33,7 +30,6 @@ class Router: MainRooter {
     private func attachView(_ bottomView: UIView, atTheBottomOf view: UIView) {
         view.addSubview(bottomView)
 
-        bottomView.tag = Self.infoViewTag
         bottomView.translatesAutoresizingMaskIntoConstraints = false
 
         bottomView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 8).isActive = true
@@ -46,7 +42,8 @@ class Router: MainRooter {
             removeDetailViewIfNeeded()
             return
         }
-
-        attachView(createDetails(for: store), atTheBottomOf: view)
+        let detailView = createDetails(for: store)
+        self.detailView = detailView
+        attachView(detailView, atTheBottomOf: view)
     }
 }
