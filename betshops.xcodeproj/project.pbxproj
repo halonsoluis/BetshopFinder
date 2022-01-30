@@ -15,6 +15,11 @@
 		5B0B7C4B27A5B76400BE22CA /* OpenInMapsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0B7C4A27A5B76400BE22CA /* OpenInMapsApp.swift */; };
 		5B0B7C4C27A5B7B800BE22CA /* OpenInMapsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0B7C4A27A5B76400BE22CA /* OpenInMapsApp.swift */; };
 		5B0B7C4F27A5B94C00BE22CA /* MapHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0B7C4E27A5B94C00BE22CA /* MapHandler.swift */; };
+		5B1B892927A67E8400A6D7EA /* BetshopStoreDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2EC28727A2E7FC00993957 /* BetshopStoreDetails.swift */; };
+		5B1B892B27A67EBF00A6D7EA /* Betshop+DetailActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1B892A27A67EBF00A6D7EA /* Betshop+DetailActions.swift */; };
+		5B1B892C27A67EBF00A6D7EA /* Betshop+DetailActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1B892A27A67EBF00A6D7EA /* Betshop+DetailActions.swift */; };
+		5B1B892E27A67F0800A6D7EA /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1B892D27A67F0800A6D7EA /* DetailView.swift */; };
+		5B1B892F27A67F0800A6D7EA /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1B892D27A67F0800A6D7EA /* DetailView.swift */; };
 		5B2EC23E27A205B200993957 /* BetshopAPI.docc in Sources */ = {isa = PBXBuildFile; fileRef = 5B2EC23D27A205B200993957 /* BetshopAPI.docc */; };
 		5B2EC24427A205B200993957 /* BetshopAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B2EC23A27A205B200993957 /* BetshopAPI.framework */; };
 		5B2EC24A27A205B200993957 /* BetshopAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B2EC23C27A205B200993957 /* BetshopAPI.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -128,6 +133,8 @@
 		5B0B7C4727A5B4F300BE22CA /* OpenHoursCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenHoursCalculator.swift; sourceTree = "<group>"; };
 		5B0B7C4A27A5B76400BE22CA /* OpenInMapsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenInMapsApp.swift; sourceTree = "<group>"; };
 		5B0B7C4E27A5B94C00BE22CA /* MapHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapHandler.swift; sourceTree = "<group>"; };
+		5B1B892A27A67EBF00A6D7EA /* Betshop+DetailActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Betshop+DetailActions.swift"; sourceTree = "<group>"; };
+		5B1B892D27A67F0800A6D7EA /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		5B2EC21D27A1EDD800993957 /* exampleLocations.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = exampleLocations.json; sourceTree = "<group>"; };
 		5B2EC21F27A1EE5200993957 /* DecodedBetshop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodedBetshop.swift; sourceTree = "<group>"; };
 		5B2EC22427A1F1D300993957 /* BetshopModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetshopModel.swift; sourceTree = "<group>"; };
@@ -287,6 +294,7 @@
 			isa = PBXGroup;
 			children = (
 				5B2EC27F27A2BFEF00993957 /* Betshop.swift */,
+				5B1B892A27A67EBF00A6D7EA /* Betshop+DetailActions.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -347,6 +355,7 @@
 				5B2EC28327A2D43900993957 /* MapAnnotationView.swift */,
 				5B2EC28727A2E7FC00993957 /* BetshopStoreDetails.swift */,
 				5B2EC28B27A489F100993957 /* MapView2.swift */,
+				5B1B892D27A67F0800A6D7EA /* DetailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -798,12 +807,15 @@
 				5B2EC2C827A4BB0400993957 /* MapViewPresenter.swift in Sources */,
 				5B0B7C3E27A5897700BE22CA /* UserLocationHandler.swift in Sources */,
 				5B2EC2C627A4BAF100993957 /* MapViewViewModel.swift in Sources */,
+				5B1B892927A67E8400A6D7EA /* BetshopStoreDetails.swift in Sources */,
 				5B2EC29927A4B20E00993957 /* MapViewController.swift in Sources */,
 				5B2EC2C427A4B9C300993957 /* Betshop.swift in Sources */,
 				5B0B7C4F27A5B94C00BE22CA /* MapHandler.swift in Sources */,
 				5B2EC29527A4B20E00993957 /* AppDelegate.swift in Sources */,
+				5B1B892C27A67EBF00A6D7EA /* Betshop+DetailActions.swift in Sources */,
 				5B0B7C4827A5B4F300BE22CA /* OpenHoursCalculator.swift in Sources */,
 				5B0B7C4027A5A8DC00BE22CA /* ThreadSafeMapView.swift in Sources */,
+				5B1B892F27A67F0800A6D7EA /* DetailView.swift in Sources */,
 				5B2EC29727A4B20E00993957 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -835,6 +847,8 @@
 				5B0B7C4927A5B65A00BE22CA /* OpenHoursCalculator.swift in Sources */,
 				5B2EC28C27A489F100993957 /* MapView2.swift in Sources */,
 				5B2EC28427A2D43A00993957 /* MapAnnotationView.swift in Sources */,
+				5B1B892B27A67EBF00A6D7EA /* Betshop+DetailActions.swift in Sources */,
+				5B1B892E27A67F0800A6D7EA /* DetailView.swift in Sources */,
 				5B566B68279FE88B004BA1B4 /* MapView.swift in Sources */,
 				5B2EC28027A2BFEF00993957 /* Betshop.swift in Sources */,
 				5B566B66279FE88B004BA1B4 /* betshopsApp.swift in Sources */,

@@ -32,13 +32,3 @@ class Betshop: NSObject, Identifiable, MKAnnotation {
         self.coordinate = coordinate
     }
 }
-
-extension Betshop {
-    var openStatus: String {
-        return OpenHoursCalculator.storeStatus()
-    }
-
-    func navigate() {
-        OpenInMapsApp.navigate(to: self)
-    }
-}

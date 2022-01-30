@@ -46,6 +46,8 @@ class MapViewController: UIViewController {
             return
         }
 
+        presentDetails(store: selected)
+
         guard !selectedAnnotations.contains(selected) else {
             return
         }
@@ -53,6 +55,17 @@ class MapViewController: UIViewController {
         if !selectedAnnotations.isEmpty && !selectedAnnotations.contains(selected) {
             map.deselectAnnotation(map.selectedAnnotations.first, animated: true)
         }
+    }
+
+    func presentDetails(store: Betshop) {
+        let view = DetailView().makeUI(store)
+
+        self.definesPresentationContext = true
+        self.modalPresentationStyle = .pageSheet
+
+        view.view.backgroundColor = .clear
+
+        present(view, animated: true, completion: nil)
     }
 }
 
