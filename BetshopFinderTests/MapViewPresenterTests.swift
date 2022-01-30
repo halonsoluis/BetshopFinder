@@ -15,7 +15,11 @@ class MapViewPresenterTests: XCTestCase {
     func test_newRegionSelection_TriggersAnnotationRequest() async throws {
         let api = BetshopAPISpy()
         let view = MapViewSpy()
-        let sut = MapViewPresenter(betshopAPI: api)
+        let sut = MapViewPresenter(
+            betshopAPI: api,
+            userLocation: UserLocationHandler(),
+            router: Router(mainViewResolver: { nil })
+        )
         sut.mapView = view
 
         try await sut.newRegionVisible(
@@ -31,7 +35,11 @@ class MapViewPresenterTests: XCTestCase {
         let view = MapViewSpy()
         let userLocation = UserLocationHandlerDummy()
 
-        let sut = MapViewPresenter(betshopAPI: api, userLocation: userLocation)
+        let sut = MapViewPresenter(
+            betshopAPI: api,
+            userLocation: userLocation,
+            router: Router(mainViewResolver: { nil })
+        )
         sut.mapView = view
 
         api.storesReturnedModels = [BetshopModel(
@@ -64,7 +72,11 @@ class MapViewPresenterTests: XCTestCase {
         let view = MapViewSpy()
         let userLocation = UserLocationHandlerDummy()
 
-        let sut = MapViewPresenter(betshopAPI: api, userLocation: userLocation)
+        let sut = MapViewPresenter(
+            betshopAPI: api,
+            userLocation: userLocation,
+            router: Router(mainViewResolver: { nil })
+        )
         sut.mapView = view
 
         api.storesReturnedModels = [BetshopModel(
