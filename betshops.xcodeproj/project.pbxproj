@@ -16,6 +16,7 @@
 		5B1B892927A67E8400A6D7EA /* BetshopStoreDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2EC28727A2E7FC00993957 /* BetshopStoreDetails.swift */; };
 		5B1B892C27A67EBF00A6D7EA /* Betshop+DetailActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1B892A27A67EBF00A6D7EA /* Betshop+DetailActions.swift */; };
 		5B1B892F27A67F0800A6D7EA /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1B892D27A67F0800A6D7EA /* DetailView.swift */; };
+		5B1B893527A6B08400A6D7EA /* MainCompositionRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1B893427A6B08400A6D7EA /* MainCompositionRoot.swift */; };
 		5B2EC23E27A205B200993957 /* BetshopAPI.docc in Sources */ = {isa = PBXBuildFile; fileRef = 5B2EC23D27A205B200993957 /* BetshopAPI.docc */; };
 		5B2EC24427A205B200993957 /* BetshopAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B2EC23A27A205B200993957 /* BetshopAPI.framework */; };
 		5B2EC24A27A205B200993957 /* BetshopAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B2EC23C27A205B200993957 /* BetshopAPI.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -93,6 +94,7 @@
 		5B0B7C4E27A5B94C00BE22CA /* MapHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapHandler.swift; sourceTree = "<group>"; };
 		5B1B892A27A67EBF00A6D7EA /* Betshop+DetailActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Betshop+DetailActions.swift"; sourceTree = "<group>"; };
 		5B1B892D27A67F0800A6D7EA /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		5B1B893427A6B08400A6D7EA /* MainCompositionRoot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCompositionRoot.swift; sourceTree = "<group>"; };
 		5B2EC21D27A1EDD800993957 /* exampleLocations.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = exampleLocations.json; sourceTree = "<group>"; };
 		5B2EC21F27A1EE5200993957 /* DecodedBetshop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodedBetshop.swift; sourceTree = "<group>"; };
 		5B2EC22427A1F1D300993957 /* BetshopModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetshopModel.swift; sourceTree = "<group>"; };
@@ -277,6 +279,7 @@
 		5B2EC29327A4B20E00993957 /* BetshopFinder */ = {
 			isa = PBXGroup;
 			children = (
+				5B1B893427A6B08400A6D7EA /* MainCompositionRoot.swift */,
 				5B0B7C4127A5ABD300BE22CA /* Models */,
 				5B2EC2C927A4BECB00993957 /* Utils */,
 				5B2EC29427A4B20E00993957 /* AppDelegate.swift */,
@@ -583,6 +586,7 @@
 				5B1B892927A67E8400A6D7EA /* BetshopStoreDetails.swift in Sources */,
 				5B2EC29927A4B20E00993957 /* MapViewController.swift in Sources */,
 				5B2EC2C427A4B9C300993957 /* Betshop.swift in Sources */,
+				5B1B893527A6B08400A6D7EA /* MainCompositionRoot.swift in Sources */,
 				5B0B7C4F27A5B94C00BE22CA /* MapHandler.swift in Sources */,
 				5B2EC29527A4B20E00993957 /* AppDelegate.swift in Sources */,
 				5B1B892C27A67EBF00A6D7EA /* Betshop+DetailActions.swift in Sources */,
@@ -790,7 +794,6 @@
 				INFOPLIST_FILE = BetshopFinder/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
@@ -820,7 +823,6 @@
 				INFOPLIST_FILE = BetshopFinder/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.2;

@@ -27,8 +27,7 @@ class MapViewPresenter {
 
     var viewModel: MapViewViewModel?
 
-    init(betshopAPI: BetshopAPI = SuperologyBetshopAPI.defaultBetshopAPI(),
-         userLocation: UserLocationHandler = UserLocationHandler()) {
+    init(betshopAPI: BetshopAPI, userLocation: UserLocationHandler) {
         self.betshopAPI = betshopAPI
         self.userLocation = userLocation
     }

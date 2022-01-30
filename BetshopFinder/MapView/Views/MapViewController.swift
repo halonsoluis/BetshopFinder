@@ -7,7 +7,6 @@
 
 import UIKit
 import MapKit
-import BetshopAPI
 
 class MapViewController: UIViewController {
     @IBOutlet var map: MKMapView!
@@ -18,12 +17,8 @@ class MapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //This has to go to a composition root.
-        presenter = MapViewPresenter()
-        presenter?.mapView = ThreadSafeMapView(mapView: self)
-
-        mapHandler = MapHandler(delegate: presenter as? MapHandlerDelegate)
         configureMap()
+        
         presenter?.viewIsLoaded()
     }
 
