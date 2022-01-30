@@ -5,7 +5,7 @@ A small app to locate betshops.
 
 <img src="Documentation/images/8.-High_level_view_clustering.png" width="230">
 <img src="Documentation/images/3.-Selected_store.png" width="230">
-<img src="Documentation/images/5.-Navigate_to_store " width="230">
+<img src="Documentation/images/5.-Navigate_to_store.png" width="230">
 </p>
 
 
