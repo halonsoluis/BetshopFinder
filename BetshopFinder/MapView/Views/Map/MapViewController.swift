@@ -31,14 +31,8 @@ class MapViewController: UIViewController {
         map.setRegion(region, animated: false)
     }
 
-    private let limitOfPointsAtOnce = 5000
     private func updateAnnotations(annotations: [Betshop], selected: Betshop?) {
         map.addAnnotations(annotations)
-
-        if map.annotations.count > limitOfPointsAtOnce {
-            map.removeAnnotations(map.annotations)
-            print("Exceeded of \(limitOfPointsAtOnce) at \(map.region.span)")
-        }
 
         let selectedAnnotations = map.selectedAnnotations.compactMap { $0 as? Betshop }
 

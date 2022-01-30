@@ -16,6 +16,7 @@ protocol MapHandlerDelegate: AnyObject {
 class MapHandler: NSObject, MKMapViewDelegate {
     private var lastRequest: UUID?
     private var delegate: MapHandlerDelegate?
+    private let maximumLongitudeDeltaForPresentingAnnotations = 5.0
 
     init(delegate: MapHandlerDelegate?) {
         self.delegate = delegate
@@ -46,6 +47,12 @@ class MapHandler: NSObject, MKMapViewDelegate {
     }
 
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+
+        guard mapView.region.span.longitudeDelta < maximumLongitudeDeltaForPresentingAnnotations else {
+            mapView.removeAnnotations(mapView.annotations)
+            return
+        }
+
         let lastRequest = UUID()
         self.lastRequest = lastRequest
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
