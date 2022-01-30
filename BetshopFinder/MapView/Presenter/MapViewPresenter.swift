@@ -5,7 +5,6 @@
 //  Created by Hugo Alonso on 29/01/2022.
 //
 
-import Foundation
 import MapKit
 import BetshopAPI
 
@@ -24,12 +23,14 @@ class MapViewPresenter {
     var mapView: MapView?
     private let betshopAPI: BetshopAPI
     private let userLocation: UserLocationHandler
+    private let router: MainRooter
 
     var viewModel: MapViewViewModel?
 
-    init(betshopAPI: BetshopAPI, userLocation: UserLocationHandler) {
+    init(betshopAPI: BetshopAPI, userLocation: UserLocationHandler, router: MainRooter) {
         self.betshopAPI = betshopAPI
         self.userLocation = userLocation
+        self.router = router
     }
 
     private func initialViewModel(location: CLLocation?) -> MapViewViewModel {
@@ -93,6 +94,8 @@ extension MapViewPresenter: MapHandlerDelegate {
 
         viewModel = model
         mapView?.update(with: model)
+
+        router.presentDetails(store: store)
     }
 }
 
