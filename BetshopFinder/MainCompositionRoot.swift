@@ -7,7 +7,6 @@
 
 import Foundation
 import UIKit
-import BetshopAPI
 import MapKit
 
 protocol MainRooter {
@@ -24,7 +23,7 @@ final class MainCompositionRoot {
     private func prepareMainView() -> UIViewController {
         let mapView = createMapKitView()
         let router = Router(mainViewResolver: { mapView.view })
-        let betshopStoresResolver = BetshopAPIAdapter(betshopAPI: SuperologyBetshopAPI.defaultBetshopAPI())
+        let betshopStoresResolver = BetshopAPIAdapter.default()
 
         let presenter = MapViewPresenter(
             betshopStoresResolver: betshopStoresResolver,

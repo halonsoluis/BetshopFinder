@@ -33,6 +33,12 @@ struct BetshopAPIAdapter: BetshopStoresFinder {
     }
 }
 
+extension BetshopAPIAdapter {
+    static func `default`() -> BetshopStoresFinder {
+        BetshopAPIAdapter(betshopAPI: SuperologyBetshopAPI.defaultBetshopAPI())
+    }
+}
+
 private extension Betshop {
     convenience init(model: BetshopModel) {
         self.init(
