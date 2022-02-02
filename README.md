@@ -5,6 +5,10 @@ A small app to locate betshops.
 
 [![pipeline status](https://github.com/halonsoluis/BetshopFinder/workflows/BetshopFinder/badge.svg)](https://github.com/halonsoluis/BetshopFinder/actions)
 [![Swift version](https://img.shields.io/badge/swift-5.5-orange.svg)](https://www.swift.org/blog/swift-5-5-released/)
+[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=halonsoluis_BetshopFinder&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=halonsoluis_BetshopFinder)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=halonsoluis_BetshopFinder&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=halonsoluis_BetshopFinder)
+[![![Bugs](https://sonarcloud.io/api/project_badges/measure?project=halonsoluis_BetshopFinder&metric=bugs)](https://sonarcloud.io/summary/new_code?id=halonsoluis_BetshopFinder)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=halonsoluis_BetshopFinder&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=halonsoluis_BetshopFinder)
 
 <p align="center">
 
