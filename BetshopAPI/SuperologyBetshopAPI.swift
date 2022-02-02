@@ -35,7 +35,7 @@ public class SuperologyBetshopAPI: BetshopAPI {
 
 extension SuperologyBetshopAPI {
     public static func defaultBetshopAPI() -> BetshopAPI {
-        SuperologyBetshopAPI(
+        return SuperologyBetshopAPI(
             dataRetriever: BetshopDataRetriever()
         )
     }
