@@ -23,14 +23,14 @@ protocol BetshopStoresFinder {
 class MapViewPresenter {
     private let betshopStoresFinder: BetshopStoresFinder
     private let userLocation: UserLocationHandler
-    private let router: MainRooter
+    private let router: MainRouter
     private let mapView: MapView
 
     var viewModel: MapViewViewModel?
 
     init(betshopStoresFinder: BetshopStoresFinder,
          userLocation: UserLocationHandler,
-         router: MainRooter,
+         router: MainRouter,
          mapView: MapView) {
         self.betshopStoresFinder = betshopStoresFinder
         self.userLocation = userLocation

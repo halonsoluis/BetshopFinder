@@ -7,34 +7,12 @@
 
 import UIKit
 
-class Router: MainRooter {
+final class Router: MainRouter {
     private weak var detailView: UIView?
     private var mainView: () -> UIView?
 
     init(mainViewResolver: @escaping () -> UIView?) {
         self.mainView = mainViewResolver
-    }
-
-    private func removeDetailViewIfNeeded() {
-        detailView?.removeFromSuperview()
-    }
-
-    private func createDetails(for store: Betshop) -> UIView {
-        let detailView = DetailView()
-            .makeUI(store)
-        detailView.view.backgroundColor = .clear
-
-        return detailView.view
-    }
-
-    private func attachView(_ bottomView: UIView, atTheBottomOf view: UIView) {
-        view.addSubview(bottomView)
-
-        bottomView.translatesAutoresizingMaskIntoConstraints = false
-
-        bottomView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 8).isActive = true
-        bottomView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
-        bottomView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive =  true
     }
 
     func presentDetails(store: Betshop?) {
@@ -45,5 +23,28 @@ class Router: MainRooter {
         let detailView = createDetails(for: store)
         self.detailView = detailView
         attachView(detailView, atTheBottomOf: view)
+    }
+
+    private func removeDetailViewIfNeeded() {
+        detailView?.removeFromSuperview()
+    }
+
+    private func createDetails(for store: Betshop) -> UIView {
+        let details = DetailView()
+            .makeUI(store)
+
+        details.view.backgroundColor = .clear
+
+        return details.view
+    }
+
+    private func attachView(_ bottomView: UIView, atTheBottomOf view: UIView) {
+        view.addSubview(bottomView)
+
+        bottomView.translatesAutoresizingMaskIntoConstraints = false
+
+        bottomView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 8).isActive = true
+        bottomView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
+        bottomView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive =  true
     }
 }

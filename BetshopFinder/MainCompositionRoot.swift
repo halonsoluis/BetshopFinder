@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import MapKit
 
-protocol MainRooter {
+protocol MainRouter {
     func presentDetails(store: Betshop?)
 }
 
