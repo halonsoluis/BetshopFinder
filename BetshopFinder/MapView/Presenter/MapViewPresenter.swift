@@ -16,6 +16,10 @@ protocol MapViewPresenterProtocol: AnyObject {
     func userRequestedRouting()
 }
 
+protocol BetshopStoresFinder {
+    func stores(in area: MKCoordinateRegion, excluding existingAnnotations: [Betshop]) async throws -> [Betshop]
+}
+
 class MapViewPresenter {
     private let betshopStoresResolver: BetshopStoresFinder
     private let userLocation: UserLocationHandler
