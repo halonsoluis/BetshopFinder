@@ -37,18 +37,3 @@ final class OpenHoursCalculatorTests: XCTestCase {
         return dateFormatter.date(from: afterWorkingHours)!
     }
 }
-//
-//NSDateFormatter *dateFormatter = [NSDateFormatter new];
-//dateFormatter.locale = locate;
-//
-//if ([[NSCalendar currentCalendar] isDateInToday:date]
-//        || [[NSCalendar currentCalendar] isDateInTomorrow:date]
-//        || [[NSCalendar currentCalendar] isDateInYesterday:date]) {
-//    dateFormatter.dateStyle = NSDateFormatterShortStyle;
-//    dateFormatter.timeStyle = NSDateFormatterNoStyle;
-//    dateFormatter.doesRelativeDateFormatting = YES;
-//    return [dateFormatter stringFromDate:date];
-//}
-//
-//[dateFormatter setDateFormat:@"E d MMMM yyyy"];
-//return [dateFormatter stringFromDate:date];
