@@ -1,6 +1,11 @@
 # BetshopFinder
 A small app to locate betshops.
 
+[//]: # "Badges"
+
+[![pipeline status](https://github.com/halonsoluis/BetshopFinder/workflows/BetshopFinder/badge.svg)](https://github.com/halonsoluis/BetshopFinder/actions)
+[![Swift version](https://img.shields.io/badge/swift-5.5-orange.svg)](https://www.swift.org/blog/swift-5-5-released/)
+
 <p align="center">
 
 <img src="Documentation/images/8.-High_level_view_clustering.png" width="230">
