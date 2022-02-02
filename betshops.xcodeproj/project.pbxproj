@@ -47,6 +47,7 @@
 		5B2EC2D027A4E4E200993957 /* BetshopAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B2EC23A27A205B200993957 /* BetshopAPI.framework */; platformFilter = ios; };
 		5B2EC2D127A4E4E300993957 /* BetshopAPI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5B2EC23A27A205B200993957 /* BetshopAPI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5B923B5827AA880000D672C5 /* BetshopAPIAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B923B5727AA880000D672C5 /* BetshopAPIAdapter.swift */; };
+		5B923B5C27AA913900D672C5 /* BetshopAPIAdapterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B923B5A27AA8FA600D672C5 /* BetshopAPIAdapterTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -132,6 +133,7 @@
 		5B2EC2CE27A4DA9400993957 /* BetshopAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetshopAnnotationView.swift; sourceTree = "<group>"; };
 		5B566B76279FE88E004BA1B4 /* DataMapperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataMapperTests.swift; sourceTree = "<group>"; };
 		5B923B5727AA880000D672C5 /* BetshopAPIAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetshopAPIAdapter.swift; sourceTree = "<group>"; };
+		5B923B5A27AA8FA600D672C5 /* BetshopAPIAdapterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetshopAPIAdapterTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -329,6 +331,7 @@
 				5B2EC2AB27A4B21100993957 /* BetshopFinderTests.swift */,
 				5B2EC2CC27A4C2FB00993957 /* MapViewPresenterTests.swift */,
 				5B0B7C4527A5ADA600BE22CA /* OpenHoursCalculatorTests.swift */,
+				5B923B5A27AA8FA600D672C5 /* BetshopAPIAdapterTests.swift */,
 			);
 			path = BetshopFinderTests;
 			sourceTree = "<group>";
@@ -645,6 +648,7 @@
 			files = (
 				5B2EC2CD27A4C2FB00993957 /* MapViewPresenterTests.swift in Sources */,
 				5B0B7C4627A5ADA600BE22CA /* OpenHoursCalculatorTests.swift in Sources */,
+				5B923B5C27AA913900D672C5 /* BetshopAPIAdapterTests.swift in Sources */,
 				5B2EC2AC27A4B21100993957 /* BetshopFinderTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

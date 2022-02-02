@@ -21,18 +21,18 @@ protocol BetshopStoresFinder {
 }
 
 class MapViewPresenter {
-    private let betshopStoresResolver: BetshopStoresFinder
+    private let betshopStoresFinder: BetshopStoresFinder
     private let userLocation: UserLocationHandler
     private let router: MainRooter
     private let mapView: MapView
 
     var viewModel: MapViewViewModel?
 
-    init(betshopStoresResolver: BetshopStoresFinder,
+    init(betshopStoresFinder: BetshopStoresFinder,
          userLocation: UserLocationHandler,
          router: MainRooter,
          mapView: MapView) {
-        self.betshopStoresResolver = betshopStoresResolver
+        self.betshopStoresFinder = betshopStoresFinder
         self.userLocation = userLocation
         self.router = router
         self.mapView = mapView
@@ -74,7 +74,7 @@ extension MapViewPresenter: MapViewPresenterProtocol {
 extension MapViewPresenter: MapHandlerDelegate {
     func newRegionVisible(region: MKCoordinateRegion, existingAnnotations: [Betshop]) async throws {
 
-        let newBetshops = try await betshopStoresResolver.stores(in: region, excluding: existingAnnotations)
+        let newBetshops = try await betshopStoresFinder.stores(in: region, excluding: existingAnnotations)
 
         let model = MapViewViewModel(
             annotations: newBetshops,

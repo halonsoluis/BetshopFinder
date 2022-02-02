@@ -26,7 +26,7 @@ final class MainCompositionRoot {
         let betshopStoresResolver = BetshopAPIAdapter.default()
 
         let presenter = MapViewPresenter(
-            betshopStoresResolver: betshopStoresResolver,
+            betshopStoresFinder: betshopStoresResolver,
             userLocation: UserLocationHandler(),
             router: router,
             mapView: ThreadSafeMapView(mapView: mapView)
