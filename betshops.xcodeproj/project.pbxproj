@@ -134,6 +134,19 @@
 		5B566B76279FE88E004BA1B4 /* DataMapperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataMapperTests.swift; sourceTree = "<group>"; };
 		5B923B5727AA880000D672C5 /* BetshopAPIAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetshopAPIAdapter.swift; sourceTree = "<group>"; };
 		5B923B5A27AA8FA600D672C5 /* BetshopAPIAdapterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetshopAPIAdapterTests.swift; sourceTree = "<group>"; };
+		5B923B5E27AAB78300D672C5 /* BetshopFinder.drawio */ = {isa = PBXFileReference; lastKnownFileType = text; path = BetshopFinder.drawio; sourceTree = "<group>"; };
+		5B923B6027AAB78300D672C5 /* 3.-Selected_store.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "3.-Selected_store.png"; sourceTree = "<group>"; };
+		5B923B6127AAB78300D672C5 /* 1.-Location-prompt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1.-Location-prompt.png"; sourceTree = "<group>"; };
+		5B923B6227AAB78300D672C5 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		5B923B6327AAB78300D672C5 /* 2.-Location_in_map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "2.-Location_in_map.png"; sourceTree = "<group>"; };
+		5B923B6427AAB78300D672C5 /* 7.-Small_clustering.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "7.-Small_clustering.png"; sourceTree = "<group>"; };
+		5B923B6527AAB78300D672C5 /* 4.-selected_store_navigate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "4.-selected_store_navigate.png"; sourceTree = "<group>"; };
+		5B923B6627AAB78300D672C5 /* 5.-Navigate_to_store.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "5.-Navigate_to_store.png"; sourceTree = "<group>"; };
+		5B923B6727AAB78300D672C5 /* 8.-High_level_view_clustering.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "8.-High_level_view_clustering.png"; sourceTree = "<group>"; };
+		5B923B6927AAB78300D672C5 /* 1.- BetshopAPI (SDK).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1.- BetshopAPI (SDK).png"; sourceTree = "<group>"; };
+		5B923B6A27AAB78300D672C5 /* 2.- BetshopFinder (Full - No Improvements).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "2.- BetshopFinder (Full - No Improvements).png"; sourceTree = "<group>"; };
+		5B923B6B27AAB78300D672C5 /* 4.-BetshopFinder (Full).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "4.-BetshopFinder (Full).png"; sourceTree = "<group>"; };
+		5B923B6C27AAB78300D672C5 /* 3.-BetshopFinder (SDK).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "3.-BetshopFinder (SDK).png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -361,6 +374,7 @@
 			isa = PBXGroup;
 			children = (
 				5B1B893C27A703DD00A6D7EA /* README.md */,
+				5B923B5D27AAB78300D672C5 /* Documentation */,
 				5B2EC29327A4B20E00993957 /* BetshopFinder */,
 				5B2EC23B27A205B200993957 /* BetshopAPI */,
 				5B1B893327A6ABE200A6D7EA /* buildStuff */,
@@ -386,6 +400,42 @@
 				5B923B5727AA880000D672C5 /* BetshopAPIAdapter.swift */,
 			);
 			path = Adapters;
+			sourceTree = "<group>";
+		};
+		5B923B5D27AAB78300D672C5 /* Documentation */ = {
+			isa = PBXGroup;
+			children = (
+				5B923B5E27AAB78300D672C5 /* BetshopFinder.drawio */,
+				5B923B5F27AAB78300D672C5 /* images */,
+				5B923B6827AAB78300D672C5 /* diagrams */,
+			);
+			path = Documentation;
+			sourceTree = "<group>";
+		};
+		5B923B5F27AAB78300D672C5 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				5B923B6027AAB78300D672C5 /* 3.-Selected_store.png */,
+				5B923B6127AAB78300D672C5 /* 1.-Location-prompt.png */,
+				5B923B6227AAB78300D672C5 /* icon.png */,
+				5B923B6327AAB78300D672C5 /* 2.-Location_in_map.png */,
+				5B923B6427AAB78300D672C5 /* 7.-Small_clustering.png */,
+				5B923B6527AAB78300D672C5 /* 4.-selected_store_navigate.png */,
+				5B923B6627AAB78300D672C5 /* 5.-Navigate_to_store.png */,
+				5B923B6727AAB78300D672C5 /* 8.-High_level_view_clustering.png */,
+			);
+			path = images;
+			sourceTree = "<group>";
+		};
+		5B923B6827AAB78300D672C5 /* diagrams */ = {
+			isa = PBXGroup;
+			children = (
+				5B923B6927AAB78300D672C5 /* 1.- BetshopAPI (SDK).png */,
+				5B923B6A27AAB78300D672C5 /* 2.- BetshopFinder (Full - No Improvements).png */,
+				5B923B6B27AAB78300D672C5 /* 4.-BetshopFinder (Full).png */,
+				5B923B6C27AAB78300D672C5 /* 3.-BetshopFinder (SDK).png */,
+			);
+			path = diagrams;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
